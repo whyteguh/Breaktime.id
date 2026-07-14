@@ -35,18 +35,13 @@ const {
             </a>
             <div class="hidden md:flex items-center gap-6">
                 <a href="/#about" class="text-sm hover:opacity-80 transition-opacity" style="color:var(--text-muted)" data-i18n="nav_about">Tentang</a>
-                <a href="/products/" class="text-sm hover:opacity-80 transition-opacity" style="color:var(--text-muted)" data-i18n="nav_products">Produk</a>
-                <a href="/events/" class="text-sm hover:opacity-80 transition-opacity" style="color:var(--text-muted)" data-i18n="nav_event">Event</a>
-                <a href="/gift/" class="text-sm hover:opacity-80 transition-opacity" style="color:var(--text-muted)" data-i18n="nav_gift">Gift</a>
-                <a href="/#testimonials" class="text-sm hover:opacity-80 transition-opacity" style="color:var(--text-muted)" data-i18n="nav_stories">Kisah</a>
-                <a href="/blog/" class="text-sm hover:opacity-80 transition-opacity" style="color:var(--text-muted)" data-i18n="nav_writings">Tulisan</a>
-                <button id="langToggle" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase border transition-all duration-300" style="border-color:var(--border-main);color:var(--text-muted)"><i data-lucide="globe" class="w-3.5 h-3.5"></i><span id="langLabel">EN</span></button>
-                <button id="themeToggle" class="flex items-center justify-center w-9 h-9 rounded-full border transition-all duration-300" style="border-color:var(--border-main);color:var(--text-muted)"><i data-lucide="moon" class="w-4 h-4" id="themeIcon"></i></button>
+                <a href="/#products" class="text-sm hover:opacity-80 transition-opacity" style="color:var(--text-muted)" data-i18n="nav_products">Produk</a>
+                <a href="/#gift" class="text-sm hover:opacity-80 transition-opacity" style="color:var(--text-muted)" data-i18n="nav_gift">Gift</a>
+                <a href="/#testimonials" class="text-sm hover:opacity-80 transition-opacity" style="color:var(--text-muted)" data-i18n="nav_stories">Cerita</a>
+                <a href="/#blog" class="text-sm hover:opacity-80 transition-opacity" style="color:var(--text-muted)" data-i18n="nav_writings">Tulisan</a>
                 <a href="/events/" class="th-btn-primary px-5 py-2.5 rounded-full text-sm font-medium" data-i18n="nav_cta">Daftar Batch 8</a>
             </div>
             <div class="flex md:hidden items-center gap-3">
-                <button id="langToggleMobile" class="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-semibold uppercase border" style="border-color:var(--border-main);color:var(--text-muted)"><span id="langLabelMobile">EN</span></button>
-                <button id="themeToggleMobile" class="w-9 h-9 rounded-full border flex items-center justify-center" style="border-color:var(--border-main);color:var(--text-muted)"><i data-lucide="moon" class="w-4 h-4" id="themeIconMobile"></i></button>
                 <button id="menuBtn" style="color:var(--text-muted)"><i data-lucide="menu" class="w-6 h-6"></i></button>
             </div>
         </div>
@@ -56,11 +51,10 @@ const {
     <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-72 z-50 p-8 flex flex-col gap-6 border-l" style="background-color:var(--bg-surface);border-color:var(--border-main)">
         <button id="closeMenu" style="color:var(--text-muted)" class="self-end"><i data-lucide="x" class="w-6 h-6"></i></button>
         <a href="/#about" class="text-lg mobile-link" style="color:var(--text-secondary)" data-i18n="nav_about">Tentang</a>
-        <a href="/products/" class="text-lg mobile-link" style="color:var(--text-secondary)" data-i18n="nav_products">Produk</a>
-        <a href="/events/" class="text-lg mobile-link" style="color:var(--text-secondary)" data-i18n="nav_event">Event</a>
-        <a href="/gift/" class="text-lg mobile-link" style="color:var(--text-secondary)" data-i18n="nav_gift">Gift</a>
-        <a href="/#testimonials" class="text-lg mobile-link" style="color:var(--text-secondary)" data-i18n="nav_stories">Kisah</a>
-        <a href="/blog/" class="text-lg mobile-link" style="color:var(--text-secondary)" data-i18n="nav_writings">Tulisan</a>
+        <a href="/#products" class="text-lg mobile-link" style="color:var(--text-secondary)" data-i18n="nav_products">Produk</a>
+        <a href="/#gift" class="text-lg mobile-link" style="color:var(--text-secondary)" data-i18n="nav_gift">Gift</a>
+        <a href="/#testimonials" class="text-lg mobile-link" style="color:var(--text-secondary)" data-i18n="nav_stories">Cerita</a>
+        <a href="/#blog" class="text-lg mobile-link" style="color:var(--text-secondary)" data-i18n="nav_writings">Tulisan</a>
         <a href="/events/" class="mt-4 th-btn-primary px-5 py-3 rounded-full text-center font-medium mobile-link" data-i18n="nav_cta">Daftar Batch 8</a>
     </div>
     <div id="menuOverlay" class="fixed inset-0 z-40 hidden" style="background-color:var(--overlay)"></div>
@@ -82,10 +76,10 @@ const {
                     <h4 class="text-xs font-bold tracking-widest uppercase mb-4" style="color:var(--text-secondary)" data-i18n="footer_explore">Jelajahi</h4>
                     <ul class="space-y-3">
                         <li><a href="/#about" class="text-sm hover:opacity-80" style="color:var(--text-muted)" data-i18n="nav_about">Tentang</a></li>
-                        <li><a href="/products/" class="text-sm hover:opacity-80" style="color:var(--text-muted)" data-i18n="nav_products">Produk</a></li>
-                        <li><a href="/events/" class="text-sm hover:opacity-80" style="color:var(--text-muted)" data-i18n="nav_event">Event</a></li>
-                        <li><a href="/gift/" class="text-sm hover:opacity-80" style="color:var(--text-muted)" data-i18n="nav_gift">Gift</a></li>
-                        <li><a href="/blog/" class="text-sm hover:opacity-80" style="color:var(--text-muted)" data-i18n="nav_writings">Tulisan</a></li>
+                        <li><a href="/#products" class="text-sm hover:opacity-80" style="color:var(--text-muted)" data-i18n="nav_products">Produk</a></li>
+                        <li><a href="/#gift" class="text-sm hover:opacity-80" style="color:var(--text-muted)" data-i18n="nav_gift">Gift</a></li>
+                        <li><a href="/#testimonials" class="text-sm hover:opacity-80" style="color:var(--text-muted)" data-i18n="nav_stories">Cerita</a></li>
+                        <li><a href="/#blog" class="text-sm hover:opacity-80" style="color:var(--text-muted)" data-i18n="nav_writings">Tulisan</a></li>
                     </ul>
                 </div>
                 <div>
@@ -101,6 +95,10 @@ const {
             <div class="border-t pt-8 flex flex-col md:flex-row items-center justify-between gap-4" style="border-color:var(--border-main)">
                 <p class="text-xs" style="color:var(--text-faint)">© {new Date().getFullYear()} breaktime.id. All rights reserved.</p>
                 <p class="text-xs italic font-serif" style="color:var(--text-faint)" data-i18n="footer_closing">Tarik napas. Kamu sudah cukup. 🌿</p>
+            </div>
+            <div class="flex items-center justify-center gap-3 mt-8">
+                <button id="langToggle" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase border transition-all duration-300" style="border-color:var(--border-main);color:var(--text-muted)"><i data-lucide="globe" class="w-3.5 h-3.5"></i><span id="langLabel">EN</span></button>
+                <button id="themeToggle" class="flex items-center justify-center w-9 h-9 rounded-full border transition-all duration-300" style="border-color:var(--border-main);color:var(--text-muted)"><i data-lucide="moon" class="w-4 h-4" id="themeIcon"></i></button>
             </div>
         </div>
     </footer>
@@ -122,9 +120,7 @@ const {
             document.documentElement.lang = currentLang;
             const nl = currentLang === 'id' ? 'EN' : 'ID';
             const label = document.getElementById('langLabel');
-            const labelMobile = document.getElementById('langLabelMobile');
             if (label) label.textContent = nl;
-            if (labelMobile) labelMobile.textContent = nl;
         }
         function toggleLang() {
             currentLang = currentLang === 'id' ? 'en' : 'id';
@@ -138,7 +134,6 @@ const {
             document.documentElement.setAttribute('data-theme', t);
             const n = t === 'dark' ? 'sun' : 'moon';
             document.getElementById('themeIcon')?.setAttribute('data-lucide', n);
-            document.getElementById('themeIconMobile')?.setAttribute('data-lucide', n);
             // @ts-ignore -- lucide is loaded globally via CDN script
             window.lucide?.createIcons();
         }
@@ -152,9 +147,7 @@ const {
             // @ts-ignore
             window.lucide?.createIcons();
             document.getElementById('langToggle')?.addEventListener('click', toggleLang);
-            document.getElementById('langToggleMobile')?.addEventListener('click', toggleLang);
             document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
-            document.getElementById('themeToggleMobile')?.addEventListener('click', toggleTheme);
             applyTranslations();
             applyTheme(currentTheme);
 

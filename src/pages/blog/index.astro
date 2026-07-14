@@ -9,9 +9,9 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 <Base title="Tulisan — breaktime.id" description="Pikiran untuk jam-jam sunyi — psikologi, neurosains, dan kebijaksanaan kuno.">
     <section class="relative pt-36 pb-24 md:pt-44 md:pb-32">
         <div class="max-w-7xl mx-auto px-6">
-            <a href="/" class="text-sm hover:opacity-80 mb-6 inline-block" style="color:var(--text-muted)">← breaktime.id</a>
-            <p class="text-xs font-bold tracking-[0.3em] uppercase mb-4" style="color:var(--accent)">Tulisan</p>
-            <h1 class="font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight mb-16" style="color:var(--text-primary)">Pikiran untuk <span class="italic" style="color:var(--text-muted)">jam-jam sunyi</span></h1>
+            <a href="/" class="text-sm hover:opacity-80 mb-6 inline-block" style="color:var(--text-muted)" data-i18n="back_home">← breaktime.id</a>
+            <p class="text-xs font-bold tracking-[0.3em] uppercase mb-4" style="color:var(--accent)" data-i18n="blog_tag">Tulisan</p>
+            <h1 class="font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight mb-16" style="color:var(--text-primary)"><span data-i18n="blog_title_1">Pikiran untuk</span> <span class="italic" style="color:var(--text-muted)" data-i18n="blog_title_2">jam-jam sunyi</span></h1>
             <div class="grid md:grid-cols-3 gap-6">
                 {posts.map((post) => <BlogCard post={post} />)}
             </div>

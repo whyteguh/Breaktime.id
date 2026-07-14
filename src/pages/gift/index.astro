@@ -9,9 +9,9 @@ const gifts = (await getCollection('gift', ({ data }) => !data.draft))
 <Base title="Gift — breaktime.id" description="Sesuatu untuk kamu bawa pulang — ebook, panduan, dan alat kecil yang bisa kamu pakai, gratis.">
     <section class="relative pt-36 pb-24 md:pt-44 md:pb-32">
         <div class="max-w-7xl mx-auto px-6">
-            <a href="/" class="text-sm hover:opacity-80 mb-6 inline-block" style="color:var(--text-muted)">← breaktime.id</a>
-            <p class="text-xs font-bold tracking-[0.3em] uppercase mb-4" style="color:var(--accent)">Gift</p>
-            <h1 class="font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight mb-4" style="color:var(--text-primary)">Sesuatu untuk <span class="italic" style="color:var(--text-muted)">kamu bawa pulang</span></h1>
+            <a href="/" class="text-sm hover:opacity-80 mb-6 inline-block" style="color:var(--text-muted)" data-i18n="back_home">← breaktime.id</a>
+            <p class="text-xs font-bold tracking-[0.3em] uppercase mb-4" style="color:var(--accent)" data-i18n="gift_tag">Gift</p>
+            <h1 class="font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight mb-4" style="color:var(--text-primary)"><span data-i18n="gift_title_1">Sesuatu untuk</span> <span class="italic" style="color:var(--text-muted)" data-i18n="gift_title_2">kamu bawa pulang</span></h1>
             <p class="max-w-2xl mb-16" style="color:var(--text-secondary)">Bukan sekadar dibaca — sesuatu yang bisa kamu pakai. Gratis, tanpa email wajib.</p>
             <div class="grid md:grid-cols-3 gap-6">
                 {gifts.map((gift) => <GiftCard gift={gift} />)}

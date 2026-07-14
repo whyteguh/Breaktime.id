@@ -59,9 +59,9 @@ const gifts = (await getCollection('gift', ({ data }) => !data.draft))
                         <p data-i18n="about_p3">Kami tidak memperbaiki orang. Kami berjalan di samping mereka. Dan ketika seseorang siap, kami membantu mereka menemukan bahwa cahaya yang selama ini mereka cari telah ada di dalam diri mereka sejak awal.</p>
                     </div>
                     <div class="mt-10 grid grid-cols-2 gap-4">
-                        <div class="p-4 rounded-xl border" style="background:var(--accent-soft);border-color:var(--accent-border)"><i data-lucide="brain" class="w-5 h-5 mb-2" style="color:var(--accent)"></i><h4 class="text-sm font-semibold mb-0.5" style="color:var(--text-primary)">Neurosains</h4><p class="text-xs" style="color:var(--text-muted)" data-i18n="about_neuro_desc">Memahami ritme alami pembaruan otak</p></div>
-                        <div class="p-4 rounded-xl border" style="background:var(--accent-soft);border-color:var(--accent-border)"><i data-lucide="heart" class="w-5 h-5 mb-2" style="color:var(--accent)"></i><h4 class="text-sm font-semibold mb-0.5" style="color:var(--text-primary)">Psikologi</h4><p class="text-xs" style="color:var(--text-muted)" data-i18n="about_psych_desc">Pendekatan penuh kasih untuk penyembuhan batin</p></div>
-                        <div class="p-4 rounded-xl border" style="background:var(--accent-soft);border-color:var(--accent-border)"><i data-lucide="lamp" class="w-5 h-5 mb-2" style="color:var(--accent)"></i><h4 class="text-sm font-semibold mb-0.5" style="color:var(--text-primary)">Filsafat</h4><p class="text-xs" style="color:var(--text-muted)" data-i18n="about_philo_desc">Pertanyaan zaman yang membuka pintu baru</p></div>
+                        <div class="p-4 rounded-xl border" style="background:var(--accent-soft);border-color:var(--accent-border)"><i data-lucide="brain" class="w-5 h-5 mb-2" style="color:var(--accent)"></i><h4 class="text-sm font-semibold mb-0.5" style="color:var(--text-primary)" data-i18n="about_neuro_title">Neurosains</h4><p class="text-xs" style="color:var(--text-muted)" data-i18n="about_neuro_desc">Memahami ritme alami pembaruan otak</p></div>
+                        <div class="p-4 rounded-xl border" style="background:var(--accent-soft);border-color:var(--accent-border)"><i data-lucide="heart" class="w-5 h-5 mb-2" style="color:var(--accent)"></i><h4 class="text-sm font-semibold mb-0.5" style="color:var(--text-primary)" data-i18n="about_psych_title">Psikologi</h4><p class="text-xs" style="color:var(--text-muted)" data-i18n="about_psych_desc">Pendekatan penuh kasih untuk penyembuhan batin</p></div>
+                        <div class="p-4 rounded-xl border" style="background:var(--accent-soft);border-color:var(--accent-border)"><i data-lucide="lamp" class="w-5 h-5 mb-2" style="color:var(--accent)"></i><h4 class="text-sm font-semibold mb-0.5" style="color:var(--text-primary)" data-i18n="about_philo_title">Filsafat</h4><p class="text-xs" style="color:var(--text-muted)" data-i18n="about_philo_desc">Pertanyaan zaman yang membuka pintu baru</p></div>
                         <div class="p-4 rounded-xl border" style="background:var(--accent-soft);border-color:var(--accent-border)"><i data-lucide="sun" class="w-5 h-5 mb-2" style="color:var(--accent)"></i><h4 class="text-sm font-semibold mb-0.5" style="color:var(--text-primary)" data-i18n="about_wisdom_title">Kebijaksanaan Kuno</h4><p class="text-xs" style="color:var(--text-muted)" data-i18n="about_wisdom_desc">Praktik yang membimbing jiwa selama ribuan tahun</p></div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@ const gifts = (await getCollection('gift', ({ data }) => !data.draft))
                         <img src="https://picsum.photos/seed/forest-meditation-green/700/900.jpg" alt="Kontemplasi di alam" class="w-full h-[500px] lg:h-[650px] object-cover">
                         <div class="absolute inset-0 th-img-gradient"></div>
                         <div class="absolute bottom-8 left-8 right-8" style="background:var(--quote-bg);border-radius:12px;padding:16px 20px">
-                            <p class="font-serif italic text-lg leading-relaxed" style="color:var(--text-primary)">"Luka adalah tempat cahaya memasuki dirimu."</p>
+                            <p class="font-serif italic text-lg leading-relaxed" style="color:var(--text-primary)" data-i18n="about_quote">"Luka adalah tempat cahaya memasuki dirimu."</p>
                             <p class="text-xs mt-2" style="color:var(--text-muted)">— Rumi</p>
                         </div>
                     </div>
@@ -92,6 +92,9 @@ const gifts = (await getCollection('gift', ({ data }) => !data.draft))
             <div class="grid md:grid-cols-3 gap-6">
                 {products.map((product) => <ProductCard product={product} />)}
             </div>
+            <div class="text-center mt-8">
+                <a href="/products/" class="group text-sm inline-flex items-center gap-2" style="color:var(--text-muted)"><span data-i18n="products_all">Lihat semua produk</span><i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i></a>
+            </div>
         </div>
     </section>
 
@@ -104,7 +107,7 @@ const gifts = (await getCollection('gift', ({ data }) => !data.draft))
             </div>
             {nextEvent && <EventFeature event={nextEvent} linkToDetail />}
             <div class="text-center mt-8">
-                <a href="/events/" class="text-sm hover:opacity-80" style="color:var(--text-muted)" data-i18n="event_all">Lihat semua event →</a>
+                <a href="/events/" class="group text-sm inline-flex items-center gap-2" style="color:var(--text-muted)"><span data-i18n="event_all">Lihat semua event</span><i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i></a>
             </div>
         </div>
     </section>

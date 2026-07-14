@@ -26,15 +26,15 @@ const isPast = startDate.getTime() < Date.now();
             <div class="space-y-4 mb-8">
                 <div class="flex items-center gap-3">
                     <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:var(--accent-soft)"><i data-lucide="calendar" class="w-4 h-4" style="color:var(--accent)"></i></div>
-                    <div><p class="text-xs" style="color:var(--text-muted)">Tanggal</p><p class="text-sm font-medium" style="color:var(--text-primary)">{dateLabel}</p></div>
+                    <div><p class="text-xs" style="color:var(--text-muted)" data-i18n="event_date_label">Tanggal</p><p class="text-sm font-medium" style="color:var(--text-primary)">{dateLabel}</p></div>
                 </div>
                 <div class="flex items-center gap-3">
                     <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:var(--accent-soft)"><i data-lucide="map-pin" class="w-4 h-4" style="color:var(--accent)"></i></div>
-                    <div><p class="text-xs" style="color:var(--text-muted)">Tempat</p><p class="text-sm font-medium" style="color:var(--text-primary)">{venue}</p></div>
+                    <div><p class="text-xs" style="color:var(--text-muted)" data-i18n="event_venue_label">Tempat</p><p class="text-sm font-medium" style="color:var(--text-primary)">{venue}</p></div>
                 </div>
                 <div class="flex items-center gap-3">
                     <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:var(--accent-soft)"><i data-lucide="clock" class="w-4 h-4" style="color:var(--accent)"></i></div>
-                    <div><p class="text-xs" style="color:var(--text-muted)">Durasi</p><p class="text-sm font-medium" style="color:var(--text-primary)">{duration}</p></div>
+                    <div><p class="text-xs" style="color:var(--text-muted)" data-i18n="event_dur_label">Durasi</p><p class="text-sm font-medium" style="color:var(--text-primary)">{duration}</p></div>
                 </div>
             </div>
             <a href={ctaHref} target="_blank" rel="noopener" class="th-btn-primary px-6 py-3 rounded-full text-sm font-medium text-center flex items-center justify-center gap-2 w-fit"><span>{ctaLabel}</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>

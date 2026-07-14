@@ -9,9 +9,9 @@ const events = (await getCollection('events', ({ data }) => !data.draft))
 <Base title="Event — breaktime.id" description="Langkah berikutnya menunggumu — jadwal workshop & retreat breaktime.">
     <section class="relative pt-36 pb-24 md:pt-44 md:pb-32">
         <div class="max-w-7xl mx-auto px-6">
-            <a href="/" class="text-sm hover:opacity-80 mb-6 inline-block" style="color:var(--text-muted)">← breaktime.id</a>
-            <p class="text-xs font-bold tracking-[0.3em] uppercase mb-4" style="color:var(--accent)">Event</p>
-            <h1 class="font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight mb-16" style="color:var(--text-primary)">Langkah berikutnya <span class="italic" style="color:var(--text-muted)">menunggumu</span></h1>
+            <a href="/" class="text-sm hover:opacity-80 mb-6 inline-block" style="color:var(--text-muted)" data-i18n="back_home">← breaktime.id</a>
+            <p class="text-xs font-bold tracking-[0.3em] uppercase mb-4" style="color:var(--accent)" data-i18n="event_tag">Event Mendatang</p>
+            <h1 class="font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight mb-16" style="color:var(--text-primary)"><span data-i18n="event_title_1">Langkah berikutnya</span> <span class="italic" style="color:var(--text-muted)" data-i18n="event_title_2">menunggumu</span></h1>
             <div class="space-y-8">
                 {events.length > 0 ? events.map((event) => <EventFeature event={event} linkToDetail />) : (
                     <p style="color:var(--text-muted)">Belum ada event terjadwal. Kembali lagi nanti.</p>
