@@ -1,0 +1,34 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+
+export async function getStaticPaths() {
+  const products = await getCollection('products', ({ data }) => !data.draft);
+  return products.map((product) => ({ params: { slug: product.id }, props: { product } }));
+}
+
+const { product } = Astro.props;
+const { Content } = await render(product);
+const { title, tagline, description, icon, features, ctaLabel, ctaHref } = product.data;
+---
+<Base title={`${title} — breaktime.id`} description={description}>
+    <section class="relative pt-36 pb-24 md:pt-44 md:pb-32">
+        <div class="max-w-3xl mx-auto px-6">
+            <a href="/products/" class="text-sm hover:opacity-80 mb-6 inline-block" style="color:var(--text-muted)">← produk</a>
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6" style="background:var(--accent-soft)"><i data-lucide={icon} class="w-7 h-7" style="color:var(--accent)"></i></div>
+            <h1 class="font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight mb-2" style="color:var(--text-primary)">{title}</h1>
+            <p class="text-lg italic font-serif mb-6" style="color:var(--accent-text)">{tagline}</p>
+            <p class="text-base leading-relaxed mb-8" style="color:var(--text-secondary)">{description}</p>
+            <ul class="space-y-3 mb-10">
+                {features.map((f) => (
+                    <li class="flex items-start gap-3"><i data-lucide={f.icon} class="w-4 h-4 mt-1 flex-shrink-0" style="color:var(--accent)"></i><span class="text-sm" style="color:var(--text-secondary)">{f.text}</span></li>
+                ))}
+            </ul>
+            <a href={ctaHref} target="_blank" rel="noopener" class="th-btn-primary px-6 py-3 rounded-full text-sm font-medium inline-flex items-center gap-2"><span>{ctaLabel}</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+
+            <article class="prose mt-16 pt-10 border-t" style="border-color:var(--border-main)">
+                <Content />
+            </article>
+        </div>
+    </section>
+</Base>

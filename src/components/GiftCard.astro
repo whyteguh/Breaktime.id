@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { typeLabel } from '../lib/site';
+
+interface Props {
+  gift: CollectionEntry<'gift'>;
+}
+const { gift } = Astro.props;
+const { title, description, type, icon } = gift.data;
+---
+<a href={`/gift/${gift.id}/`} class="th-card rounded-2xl overflow-hidden border block p-6" style="background:var(--bg-card);border-color:var(--border-main)">
+    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 text-2xl" style="background:var(--accent-soft)">{icon}</div>
+    <span class="px-2.5 py-1 rounded-full text-xs font-medium" style="background:var(--accent-soft);color:var(--accent-text)">{typeLabel[type] ?? type}</span>
+    <h3 class="font-serif text-lg font-semibold mt-3 mb-2" style="color:var(--text-primary)">{title}</h3>
+    <p class="text-sm leading-relaxed line-clamp-3" style="color:var(--text-muted)">{description}</p>
+</a>

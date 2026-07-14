@@ -1,0 +1,20 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ProductCard from '../../components/ProductCard.astro';
+
+const products = (await getCollection('products', ({ data }) => !data.draft))
+  .sort((a, b) => a.data.order - b.data.order);
+---
+<Base title="Produk — breaktime.id" description="Tiga cara pulang ke dirimu sendiri: retreat, guide path, dan buku breaktime.">
+    <section class="relative pt-36 pb-24 md:pt-44 md:pb-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <a href="/" class="text-sm hover:opacity-80 mb-6 inline-block" style="color:var(--text-muted)">← breaktime.id</a>
+            <p class="text-xs font-bold tracking-[0.3em] uppercase mb-4" style="color:var(--accent)">Produk</p>
+            <h1 class="font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight mb-6" style="color:var(--text-primary)">Tiga cara pulang <span class="italic" style="color:var(--text-muted)">ke dirimu sendiri</span></h1>
+            <div class="grid md:grid-cols-3 gap-6 mt-16">
+                {products.map((product) => <ProductCard product={product} />)}
+            </div>
+        </div>
+    </section>
+</Base>

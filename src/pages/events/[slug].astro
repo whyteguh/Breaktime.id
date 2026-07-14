@@ -1,0 +1,25 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import EventFeature from '../../components/EventFeature.astro';
+
+export async function getStaticPaths() {
+  const events = await getCollection('events', ({ data }) => !data.draft);
+  return events.map((event) => ({ params: { slug: event.id }, props: { event } }));
+}
+
+const { event } = Astro.props;
+const { Content } = await render(event);
+const { title, tagline } = event.data;
+---
+<Base title={`${title} — breaktime.id`} description={tagline}>
+    <section class="relative pt-36 pb-24 md:pt-44 md:pb-32">
+        <div class="max-w-3xl mx-auto px-6">
+            <a href="/events/" class="text-sm hover:opacity-80 mb-6 inline-block" style="color:var(--text-muted)">← event</a>
+            <EventFeature event={event} />
+            <article class="prose mt-12">
+                <Content />
+            </article>
+        </div>
+    </section>
+</Base>

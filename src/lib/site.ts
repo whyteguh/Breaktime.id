@@ -1,0 +1,97 @@
+// Shared chrome copy (nav/hero/footer/etc.), ported 1:1 from initialdesign.html's
+// bilingual T{} dictionary. Collection content (blog/products/events/gift) is
+// authored in Indonesian only and doesn't respond to the lang toggle.
+
+export const T = {
+  id: {
+    nav_about: 'Tentang', nav_products: 'Produk', nav_event: 'Event', nav_gift: 'Gift', nav_stories: 'Kisah', nav_writings: 'Tulisan', nav_cta: 'Daftar Batch 8',
+    hero_desc: 'Ketika dunia memintamu terus melangkah, kami mengundangmu untuk berhenti sejenak. Breaktime adalah ruang lembut untuk menemukan jalan pulang — dari malam tergelap menuju cahaya yang sunyi.',
+    hero_cta1: 'Jelajahi Produk', hero_cta2: 'Pelajari Lebih Lanjut', hero_scroll: 'Gulir perlahan',
+    about_tag: 'Tentang breaktime', about_title_1: 'Bukan patah.', about_title_2: 'Terobosan.',
+    about_p1: 'Kami percaya bahwa momen-momen tergelap bukan tanda kelemahan — melainkan undangan. Undangan untuk berhenti, merasakan, dan perlahan menemukan jalan kembali ke diri sendiri.',
+    about_p2: 'Breaktime.id lahir dari kebenaran sederhana: istirahat bukanlah hadiah atas produktivitas. Ia adalah tanah dari mana segalanya tumbuh. Kami menenun psikologi, filsafat, neurosains, dan kebijaksanaan kuno — bukan sebagai alat optimasi, melainkan sebagai sahabat bagi jiwa.',
+    about_p3: 'Kami tidak memperbaiki orang. Kami berjalan di samping mereka. Dan ketika seseorang siap, kami membantu mereka menemukan bahwa cahaya yang selama ini mereka cari telah ada di dalam diri mereka sejak awal.',
+    about_neuro_desc: 'Memahami ritme alami pembaruan otak', about_psych_desc: 'Pendekatan penuh kasih untuk penyembuhan batin', about_philo_desc: 'Pertanyaan zaman yang membuka pintu baru', about_wisdom_title: 'Kebijaksanaan Kuno', about_wisdom_desc: 'Praktik yang membimbing jiwa selama ribuan tahun',
+    products_tag: 'Produk', products_title_1: 'Tiga cara pulang', products_title_2: 'ke dirimu sendiri', products_all: 'Lihat semua produk',
+    event_tag: 'Event Mendatang', event_title_1: 'Langkah berikutnya', event_title_2: 'menunggumu',
+    event_date_label: 'Tanggal', event_venue_label: 'Tempat', event_dur_label: 'Durasi', event_all: 'Lihat semua event',
+    testi_tag: 'Cerita tentang pulang', testi_title_1: 'Kata-kata dari mereka yang', testi_title_2: 'menemukan jalan pulang',
+    stat_1: 'Jiwa yang dijamah lembut', stat_2: 'Batch telah berjalan', stat_3: 'Guide tersertifikasi', stat_4: 'Transformasi sunyi',
+    blog_tag: 'Tulisan', blog_title_1: 'Pikiran untuk', blog_title_2: 'jam-jam sunyi', blog_all: 'Baca semua tulisan',
+    gift_tag: 'Gift', gift_title_1: 'Sesuatu untuk', gift_title_2: 'kamu bawa pulang', gift_all: 'Lihat semua gift',
+    social_tag: 'Tetap terhubung', social_title_1: 'Obrolan berlanjut', social_title_2: 'dengan lembut',
+    social_desc: 'Kami berbagi pikiran yang sunyi, pengingat harian untuk bernapas, dan ruang untuk percakapan jujur. Tanpa hiruk-pikuk. Tanpa algoritma. Hanya komunitas yang belajar menjadi manusia bersama.',
+    contact_ready: 'Siap bergabung di Batch 8?', contact_person: 'Pelayan Breaktime', contact_wa: 'Hubungi via WhatsApp',
+    newsletter_desc: 'Surat yang sunyi, sesekali. Tanpa spam — hanya cahaya. 🌿', newsletter_placeholder: 'email@kamu.com', newsletter_cta: 'Berlangganan',
+    newsletter_success: 'Terima kasih. Surat yang sunyi akan segera menemukanmu. 🌿', newsletter_error: 'Silakan masukkan alamat email yang valid.',
+    footer_desc: 'Kerangka lembut untuk membantumu berhenti sejenak, bernapas, dan menemukan jalan pulang. Berakar pada kasih, dibimbing oleh kebijaksanaan, dijamah oleh komunitas.',
+    footer_explore: 'Jelajahi', footer_connect: 'Terhubung', footer_closing: 'Tarik napas. Kamu sudah cukup. 🌿',
+    back_home: '← breaktime.id',
+  },
+  en: {
+    nav_about: 'About', nav_products: 'Products', nav_event: 'Event', nav_gift: 'Gift', nav_stories: 'Stories', nav_writings: 'Writings', nav_cta: 'Join Batch 8',
+    hero_desc: 'When the world asks you to keep going, we invite you to pause. Breaktime is a gentle space to find your way back — from the darkest nights to your own quiet light.',
+    hero_cta1: 'Explore Products', hero_cta2: 'Learn More', hero_scroll: 'Scroll gently',
+    about_tag: 'About breaktime', about_title_1: 'Not broken.', about_title_2: 'Breaking through.',
+    about_p1: 'We believe that the darkest moments are not signs of weakness — they are invitations. Invitations to stop, to feel, and to slowly find your way back to yourself.',
+    about_p2: 'Breaktime.id was born from a simple truth: rest is not a reward for productivity. It is the ground from which everything else grows. We weave together psychology, philosophy, neuroscience, and ancient wisdom — not as tools for optimization, but as companions for the soul.',
+    about_p3: "We don't fix people. We walk beside them. And when someone is ready, we help them discover that the light they've been searching for has been within them all along.",
+    about_neuro_desc: "Understanding the brain's natural rhythms of renewal", about_psych_desc: 'Compassionate approaches to inner healing', about_philo_desc: 'Timeless questions that open new doorways', about_wisdom_title: 'Ancient Wisdom', about_wisdom_desc: 'Practices that have guided souls for millennia',
+    products_tag: 'Products', products_title_1: 'Three ways to come', products_title_2: 'home to yourself', products_all: 'See all products',
+    event_tag: 'Upcoming Event', event_title_1: 'The next step', event_title_2: 'is waiting for you',
+    event_date_label: 'Date', event_venue_label: 'Venue', event_dur_label: 'Duration', event_all: 'See all events',
+    testi_tag: 'Stories of returning', testi_title_1: 'Words from those who', testi_title_2: 'found their way back',
+    stat_1: 'Souls gently held', stat_2: 'Batches completed', stat_3: 'Guides certified', stat_4: 'Quiet transformations',
+    blog_tag: 'Writings', blog_title_1: 'Thoughts for the', blog_title_2: 'quiet hours', blog_all: 'Read all writings',
+    gift_tag: 'Gift', gift_title_1: 'Something for', gift_title_2: 'you to take home', gift_all: 'See all gifts',
+    social_tag: 'Stay connected', social_title_1: 'The conversation', social_title_2: 'continues gently',
+    social_desc: 'We share quiet thoughts, daily reminders to breathe, and spaces for honest conversations. No noise. No algorithms. Just a community learning to be human together.',
+    contact_ready: 'Ready to join Batch 8?', contact_person: 'Pelayan Breaktime', contact_wa: 'Contact via WhatsApp',
+    newsletter_desc: 'A quiet letter, once in a while. No spam — just light. 🌿', newsletter_placeholder: 'your@email.com', newsletter_cta: 'Subscribe',
+    newsletter_success: 'Thank you. A quiet letter will find you soon. 🌿', newsletter_error: 'Please enter a valid email address.',
+    footer_desc: 'A gentle framework to help you pause, breathe, and find your way back. Rooted in compassion, guided by wisdom, held by community.',
+    footer_explore: 'Explore', footer_connect: 'Connect', footer_closing: "Take a breath. You're doing enough. 🌿",
+    back_home: '← breaktime.id',
+  },
+} as const;
+
+export type Lang = keyof typeof T;
+
+// Testimonials stay static (not a collection) — same bilingual copy as initialdesign.html.
+export const testimonials = {
+  id: [
+    { text: '"Saya datang nyaris tak bisa menahan diri. Saya pulang merasa bisa bernapas lagi. Bukan karena semuanya sudah beres — tapi karena diperbolehkan untuk tidak baik-baik saja."', name: 'Anindya', batch: 'Retreat Batch 6', initial: 'A', from: 'green-400', to: 'green-600' },
+    { text: '"Jalan sunyi mengubah sesuatu dalam diri saya yang tak bisa dijelaskan. Untuk pertama kali dalam bertahun-tahun, saya mendengar suara saya sendiri — bukan kebisingan ekspektasi."', name: 'Ratna', batch: 'Retreat Batch 7', initial: 'R', from: 'emerald-400', to: 'emerald-600' },
+    { text: '"Guide Path tidak mengajarkan saya menyembuhkan orang. Ia mengajarkan saya bagaimana duduk bersama seseorang dalam kegelapan tanpa berusaha mengejar mereka ke cahaya. Itu layanan sejati."', name: 'Fajar', batch: 'Lulusan Guide Path', initial: 'F', from: 'amber-400', to: 'amber-600' },
+    { text: '"Awalnya saya skeptis. Kira-kira ini acara motivasi lagi. Tapi para fasilitator menjaga ruang dengan begitu lembut — tanpa positivitas beracun, hanya kehadiran yang jujur."', name: 'Dewi', batch: 'Retreat Batch 5', initial: 'D', from: 'purple-400', to: 'purple-600' },
+    { text: '"Setelah burnout, saya bahkan tak bisa menamai apa yang saya rasakan. Sesi neurosains membantu saya memahami — otak saya tidak rusak, ia sedang melindungi saya. Itu mengubah segalanya."', name: 'Bayu', batch: 'Retreat Batch 7', initial: 'B', from: 'rose-400', to: 'rose-600' },
+    { text: '"Sebagai terapis, Guide Path menambah dimensi yang tak pernah saya pelajari di sekolah — bagaimana benar-benar beristirahat sendiri, agar bisa menawarkan istirahat kepada orang lain. Sangat merendahkan."', name: 'Maya', batch: 'Lulusan Guide Path', initial: 'M', from: 'cyan-400', to: 'cyan-600' },
+  ],
+  en: [
+    { text: '"I came in barely holding together. I left feeling like I could finally breathe again. Not because everything was fixed — but because I was allowed to not be okay."', name: 'Anindya', batch: 'Retreat Batch 6', initial: 'A', from: 'green-400', to: 'green-600' },
+    { text: "\"The silence walk changed something in me I can't explain. For the first time in years, I heard my own voice — not the noise of expectations.\"", name: 'Ratna', batch: 'Retreat Batch 7', initial: 'R', from: 'emerald-400', to: 'emerald-600' },
+    { text: "\"The Guide Path didn't teach me how to heal people. It taught me how to sit with someone in their darkness without trying to rush them into light. That's real service.\"", name: 'Fajar', batch: 'Guide Path Graduate', initial: 'F', from: 'amber-400', to: 'amber-600' },
+    { text: '"I was skeptical. Thought this would be another motivational thing. But the facilitators held the space with such gentleness — no toxic positivity, just honest presence."', name: 'Dewi', batch: 'Retreat Batch 5', initial: 'D', from: 'purple-400', to: 'purple-600' },
+    { text: '"After burnout, I couldn\'t even name what I felt. The neuroscience sessions helped me understand — my brain wasn\'t broken, it was protecting me. That changed everything."', name: 'Bayu', batch: 'Retreat Batch 7', initial: 'B', from: 'rose-400', to: 'rose-600' },
+    { text: '"As a therapist, the Guide Path added a dimension I never learned in school — how to truly rest myself, so I can offer rest to others. Profoundly humbling."', name: 'Maya', batch: 'Guide Path Graduate', initial: 'M', from: 'cyan-400', to: 'cyan-600' },
+  ],
+} as const;
+
+export const socials = [
+  { label: '@breaktime.id', platform: 'instagram', href: 'https://instagram.com/breaktime.id' },
+  { label: 'TikTok', platform: 'tiktok', href: 'https://tiktok.com/@breaktime.id' },
+  { label: 'YouTube', platform: 'youtube', href: 'https://youtube.com/@breaktime.id' },
+];
+
+export const whatsappHref = 'https://wa.me/';
+
+export const fmtDate = (d: Date) =>
+  d.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
+
+export const fmtMonth = (d: Date) =>
+  d.toLocaleDateString('id-ID', { month: 'short', year: 'numeric' });
+
+export const typeLabel: Record<string, string> = {
+  webapp: 'Aplikasi Web',
+  landing: 'Unduhan Gratis',
+};

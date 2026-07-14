@@ -1,0 +1,40 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { typeLabel } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const gifts = await getCollection('gift', ({ data }) => !data.draft);
+  return gifts.map((gift) => ({ params: { slug: gift.id }, props: { gift } }));
+}
+
+const { gift } = Astro.props;
+const { Content } = await render(gift);
+const { title, description, type, icon, appUrl, downloadUrl, downloadLabel } = gift.data;
+---
+<Base title={`${title} — breaktime.id`} description={description}>
+    <section class="relative pt-36 pb-24 md:pt-44 md:pb-32">
+        <div class="max-w-3xl mx-auto px-6">
+            <a href="/gift/" class="text-sm hover:opacity-80 mb-6 inline-block" style="color:var(--text-muted)">← gift</a>
+            <div class="w-14 h-14 rounded-xl flex items-center justify-center mb-6 text-3xl" style="background:var(--accent-soft)">{icon}</div>
+            <span class="px-2.5 py-1 rounded-full text-xs font-medium" style="background:var(--accent-soft);color:var(--accent-text)">{typeLabel[type] ?? type}</span>
+            <h1 class="font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight mt-4 mb-4" style="color:var(--text-primary)">{title}</h1>
+            <p class="text-base leading-relaxed mb-8" style="color:var(--text-secondary)">{description}</p>
+
+            {type === 'landing' ? (
+                <div class="mb-10">
+                    <a href={downloadUrl} download class="th-btn-primary px-6 py-3 rounded-full text-sm font-medium inline-flex items-center gap-2"><i data-lucide="download" class="w-4 h-4"></i><span>{downloadLabel ?? 'Unduh gratis'}</span></a>
+                    <p class="text-xs mt-3" style="color:var(--text-faint)">tanpa email wajib · gratis selamanya</p>
+                </div>
+            ) : (
+                <div class="mb-10 rounded-2xl overflow-hidden border" style="border-color:var(--border-main)">
+                    <iframe class="w-full h-[70vh]" src={appUrl} title={title}></iframe>
+                </div>
+            )}
+
+            <article class="prose pt-10 border-t" style="border-color:var(--border-main)">
+                <Content />
+            </article>
+        </div>
+    </section>
+</Base>

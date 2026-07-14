@@ -1,0 +1,43 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { fmtDate } from '../lib/site';
+
+interface Props {
+  event: CollectionEntry<'events'>;
+  linkToDetail?: boolean;
+}
+const { event, linkToDetail = false } = Astro.props;
+const { title, tagline, badge, image, dateLabel, startDate, venue, duration, ctaLabel, ctaHref } = event.data;
+const isPast = startDate.getTime() < Date.now();
+---
+<div class="relative rounded-2xl overflow-hidden border" style="border-color:var(--border-main);background:var(--bg-card);box-shadow:var(--shadow-lg)">
+    <div class="grid lg:grid-cols-2">
+        <div class="relative h-72 lg:h-auto overflow-hidden">
+            <img src={image} alt={title} class="w-full h-full object-cover">
+            <div class="absolute inset-0 th-img-gradient"></div>
+            <div class="absolute top-4 left-4"><span class="px-3 py-1.5 bg-green-600/90 backdrop-blur-sm rounded-full text-xs font-bold tracking-wider uppercase text-white">{badge}</span></div>
+            {isPast && <div class="absolute top-4 right-4"><span class="px-3 py-1.5 bg-black/50 backdrop-blur-sm rounded-full text-xs font-bold tracking-wider uppercase text-white">Selesai</span></div>}
+        </div>
+        <div class="p-8 md:p-10 flex flex-col justify-center">
+            {linkToDetail
+                ? <a href={`/events/${event.id}/`} class="font-serif text-2xl md:text-3xl font-semibold mb-1 hover:opacity-80" style="color:var(--text-primary)">{title}</a>
+                : <p class="font-serif text-2xl md:text-3xl font-semibold mb-1" style="color:var(--text-primary)">{title}</p>}
+            <p class="text-sm italic font-serif mb-6" style="color:var(--accent-text)">{tagline}</p>
+            <div class="space-y-4 mb-8">
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:var(--accent-soft)"><i data-lucide="calendar" class="w-4 h-4" style="color:var(--accent)"></i></div>
+                    <div><p class="text-xs" style="color:var(--text-muted)">Tanggal</p><p class="text-sm font-medium" style="color:var(--text-primary)">{dateLabel}</p></div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:var(--accent-soft)"><i data-lucide="map-pin" class="w-4 h-4" style="color:var(--accent)"></i></div>
+                    <div><p class="text-xs" style="color:var(--text-muted)">Tempat</p><p class="text-sm font-medium" style="color:var(--text-primary)">{venue}</p></div>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:var(--accent-soft)"><i data-lucide="clock" class="w-4 h-4" style="color:var(--accent)"></i></div>
+                    <div><p class="text-xs" style="color:var(--text-muted)">Durasi</p><p class="text-sm font-medium" style="color:var(--text-primary)">{duration}</p></div>
+                </div>
+            </div>
+            <a href={ctaHref} target="_blank" rel="noopener" class="th-btn-primary px-6 py-3 rounded-full text-sm font-medium text-center flex items-center justify-center gap-2 w-fit"><span>{ctaLabel}</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+        </div>
+    </div>
+</div>

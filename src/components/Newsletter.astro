@@ -1,0 +1,33 @@
+---
+---
+<div class="max-w-md mx-auto">
+    <p class="text-sm mb-4" style="color:var(--text-muted)" data-i18n="newsletter_desc">Surat yang sunyi, sesekali. Tanpa spam — hanya cahaya. 🌿</p>
+    <form id="newsletterForm" class="flex gap-2">
+        <input type="email" id="emailInput" class="flex-1 px-4 py-3 rounded-full text-sm th-input border" data-i18n-placeholder="newsletter_placeholder" placeholder="email@kamu.com">
+        <button type="submit" class="th-btn-primary px-6 py-3 rounded-full text-sm font-medium" data-i18n="newsletter_cta">Berlangganan</button>
+    </form>
+    <div id="newsletterMsg" class="mt-3 text-sm hidden" style="color:var(--accent)"></div>
+</div>
+
+<script>
+    import { T } from '../lib/site';
+
+    document.getElementById('newsletterForm')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const input = document.getElementById('emailInput') as HTMLInputElement;
+        const msg = document.getElementById('newsletterMsg');
+        if (!input || !msg) return;
+        const lang = (localStorage.getItem('bt-lang') as 'id' | 'en') || 'id';
+        const l = T[lang];
+        if (!input.value || !input.value.includes('@')) {
+            msg.textContent = l.newsletter_error;
+            msg.style.color = 'var(--text-muted)';
+        } else {
+            msg.textContent = l.newsletter_success;
+            msg.style.color = 'var(--accent)';
+            input.value = '';
+        }
+        msg.classList.remove('hidden');
+        setTimeout(() => msg.classList.add('hidden'), 5000);
+    });
+</script>

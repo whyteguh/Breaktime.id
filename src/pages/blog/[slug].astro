@@ -1,0 +1,30 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { fmtDate } from '../../lib/site';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: post.id }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const { title, description, category, image, date } = post.data;
+---
+<Base title={`${title} — breaktime.id`} description={description}>
+    <section class="relative pt-36 pb-24 md:pt-44 md:pb-32">
+        <div class="max-w-3xl mx-auto px-6">
+            <a href="/blog/" class="text-sm hover:opacity-80 mb-6 inline-block" style="color:var(--text-muted)">← tulisan</a>
+            <div class="flex items-center gap-3 mb-5">
+                <span class="px-2.5 py-1 rounded-full text-xs font-medium" style="background:var(--accent-soft);color:var(--accent-text)">{category}</span>
+                <span class="text-xs" style="color:var(--text-muted)">{fmtDate(date)}</span>
+            </div>
+            <h1 class="font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight mb-8" style="color:var(--text-primary)">{title}</h1>
+            <img src={image} alt="" class="w-full h-64 md:h-96 object-cover rounded-2xl mb-10 border" style="border-color:var(--border-main)">
+            <article class="prose">
+                <Content />
+            </article>
+        </div>
+    </section>
+</Base>

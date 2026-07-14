@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="light" data-lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>breaktime.id — A Journey on Finding Magic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-base: #f5f7f0;--bg-surface: #ffffff;--bg-elevated: #eef2e6;--bg-muted: #e8ede0;
+            --bg-card: #ffffff;--bg-input: #f0f4e8;--text-primary: #1a2e1a;--text-secondary: #3d5240;
+            --text-muted: #6b7f6b;--text-faint: #8a9a8a;--accent: #16a34a;--accent-hover: #15803d;
+            --accent-text: #16a34a;--accent-soft: rgba(22,163,74,0.08);--accent-border: rgba(22,163,74,0.2);
+            --accent-glow: rgba(22,163,74,0.15);--border-main: #d4e4d4;--border-subtle: #e2ece2;
+            --hero-circle-1: rgba(22,163,74,0.06);--hero-circle-2: rgba(22,163,74,0.09);
+            --hero-circle-3: rgba(22,163,74,0.12);--hero-circle-border: rgba(22,163,74,0.12);
+            --overlay: rgba(0,0,0,0.3);--nav-bg: rgba(245,247,240,0.92);--nav-border: #d4e4d4;
+            --img-gradient: rgba(245,247,240,0.9);--quote-bg: rgba(245,247,240,0.85);
+            --shadow: 0 4px 24px rgba(0,0,0,0.06);--shadow-lg: 0 8px 40px rgba(0,0,0,0.08);
+            --star-color: #eab308;
+        }
+        [data-theme="dark"] {
+            --bg-base: #0a1a10;--bg-surface: #0f1f14;--bg-elevated: #132218;--bg-muted: #1a3020;
+            --bg-card: rgba(20,83,45,0.08);--bg-input: rgba(20,83,45,0.15);--text-primary: #f0f4e8;
+            --text-secondary: #a3b8a3;--text-muted: #7a8a7a;--text-faint: #5a6a5a;--accent: #22c55e;
+            --accent-hover: #16a34a;--accent-text: #4ade80;--accent-soft: rgba(34,197,94,0.08);
+            --accent-border: rgba(34,197,94,0.2);--accent-glow: rgba(34,197,94,0.15);
+            --border-main: rgba(22,163,74,0.15);--border-subtle: rgba(22,163,74,0.08);
+            --hero-circle-1: rgba(34,197,94,0.05);--hero-circle-2: rgba(34,197,94,0.08);
+            --hero-circle-3: rgba(34,197,94,0.1);--hero-circle-border: rgba(34,197,94,0.1);
+            --overlay: rgba(0,0,0,0.5);--nav-bg: rgba(10,26,16,0.92);--nav-border: rgba(22,163,74,0.15);
+            --img-gradient: rgba(10,26,16,0.9);--quote-bg: rgba(10,26,16,0.8);
+            --shadow: 0 4px 24px rgba(0,0,0,0.2);--shadow-lg: 0 8px 40px rgba(0,0,0,0.3);
+            --star-color: #facc15;
+        }
+        *{box-sizing:border-box}
+        body{background-color:var(--bg-base);color:var(--text-primary);font-family:'Inter',sans-serif;transition:background-color .4s ease,color .4s ease}
+        @keyframes breatheIn{0%{transform:scale(1);opacity:.3}50%{transform:scale(1.15);opacity:.6}100%{transform:scale(1);opacity:.3}}
+        @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes gentleGlow{0%,100%{box-shadow:0 0 20px var(--accent-glow)}50%{box-shadow:0 0 40px var(--accent-glow)}}
+        .breathe{animation:breatheIn 6s ease-in-out infinite}.breathe-delay{animation:breatheIn 6s ease-in-out 3s infinite}
+        .float-gentle{animation:float 6s ease-in-out infinite}.fade-in-up{animation:fadeInUp 1s ease-out forwards}
+        .fade-in-up-delay{animation:fadeInUp 1s ease-out .3s forwards;opacity:0}.fade-in-up-delay2{animation:fadeInUp 1s ease-out .6s forwards;opacity:0}
+        .gentle-glow{animation:gentleGlow 4s ease-in-out infinite}
+        ::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:var(--bg-base)}::-webkit-scrollbar-thumb{background:var(--border-main);border-radius:3px}
+        .th-card{background-color:var(--bg-card);border-color:var(--border-main);transition:all .4s ease}.th-card:hover{border-color:var(--accent-border)}
+        .th-btn-primary{background-color:var(--accent);color:#fff;transition:all .3s ease}.th-btn-primary:hover{background-color:var(--accent-hover);box-shadow:0 8px 24px var(--accent-glow)}
+        .th-btn-outline{border-color:var(--border-main);color:var(--text-secondary);transition:all .3s ease}.th-btn-outline:hover{border-color:var(--accent-border);color:var(--text-primary)}
+        .th-input{background-color:var(--bg-input);border-color:var(--border-main);color:var(--text-primary);transition:all .3s ease}.th-input:focus{border-color:var(--accent-border);outline:none}.th-input::placeholder{color:var(--text-faint)}
+        .th-img-gradient{background:linear-gradient(to top,var(--img-gradient),transparent,transparent)}
+        .navbar-scrolled{background-color:var(--nav-bg)!important;backdrop-filter:blur(12px);border-bottom:1px solid var(--nav-border)}
+        .mobile-menu{transform:translateX(100%);transition:transform .3s ease}.mobile-menu.open{transform:translateX(0)}
+        .testimonial-track{transition:transform .5s ease}.blog-card:hover .blog-img{transform:scale(1.05)}
+        .nature-pattern{background-image:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%2316a34a' fill-opacity='0.04'%3E%3Cpath d='M40 0C17.9 0 0 17.9 0 40s17.9 40 40 40 40-17.9 40-40S62.1 0 40 0zm0 70c-16.5 0-30-13.5-30-30S23.5 10 40 10s30 13.5 30 30-13.5 30-30 30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+        section,nav,footer,.th-card,.th-btn-primary,.th-btn-outline,.th-input{transition:background-color .4s ease,color .4s ease,border-color .4s ease}
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-500">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2 group">
+                <div class="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center group-hover:shadow-lg group-hover:shadow-green-500/30 transition-all duration-300"><i data-lucide="pause" class="w-4 h-4 text-white"></i></div>
+                <span class="text-lg font-serif font-semibold tracking-tight" style="color:var(--text-primary)">breaktime<span style="color:var(--accent)">.id</span></span>
+            </a>
+            <div class="hidden md:flex items-center gap-6">
+                <a href="#about" class="text-sm hover:opacity-80 transition-opacity" style="color:var(--text-muted)" data-i18n="nav_about">Tentang</a>
+                <a href="#products" class="text-sm hover:opacity-80 transition-opacity" style="color:var(--text-muted)" data-i18n="nav_products">Produk</a>
+                <a href="#event" class="text-sm hover:opacity-80 transition-opacity" style="color:var(--text-muted)" data-i18n="nav_event">Event</a>
+                <a href="#testimonials" class="text-sm hover:opacity-80 transition-opacity" style="color:var(--text-muted)" data-i18n="nav_stories">Kisah</a>
+                <a href="#blog" class="text-sm hover:opacity-80 transition-opacity" style="color:var(--text-muted)" data-i18n="nav_writings">Tulisan</a>
+                <button id="langToggle" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase border transition-all duration-300" style="border-color:var(--border-main);color:var(--text-muted)"><i data-lucide="globe" class="w-3.5 h-3.5"></i><span id="langLabel">EN</span></button>
+                <button id="themeToggle" class="flex items-center justify-center w-9 h-9 rounded-full border transition-all duration-300" style="border-color:var(--border-main);color:var(--text-muted)"><i data-lucide="moon" class="w-4 h-4" id="themeIcon"></i></button>
+                <a href="#event" class="th-btn-primary px-5 py-2.5 rounded-full text-sm font-medium" data-i18n="nav_cta">Daftar Batch 8</a>
+            </div>
+            <div class="flex md:hidden items-center gap-3">
+                <button id="langToggleMobile" class="flex items-center gap-1 px-2.5 py-1.5 rounded-full text-xs font-semibold uppercase border" style="border-color:var(--border-main);color:var(--text-muted)"><span id="langLabelMobile">EN</span></button>
+                <button id="themeToggleMobile" class="w-9 h-9 rounded-full border flex items-center justify-center" style="border-color:var(--border-main);color:var(--text-muted)"><i data-lucide="moon" class="w-4 h-4" id="themeIconMobile"></i></button>
+                <button id="menuBtn" style="color:var(--text-muted)"><i data-lucide="menu" class="w-6 h-6"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu fixed inset-y-0 right-0 w-72 z-50 p-8 flex flex-col gap-6 border-l" style="background-color:var(--bg-surface);border-color:var(--border-main)">
+        <button id="closeMenu" style="color:var(--text-muted)" class="self-end"><i data-lucide="x" class="w-6 h-6"></i></button>
+        <a href="#about" class="text-lg mobile-link" style="color:var(--text-secondary)" data-i18n="nav_about">Tentang</a>
+        <a href="#products" class="text-lg mobile-link" style="color:var(--text-secondary)" data-i18n="nav_products">Produk</a>
+        <a href="#event" class="text-lg mobile-link" style="color:var(--text-secondary)" data-i18n="nav_event">Event</a>
+        <a href="#testimonials" class="text-lg mobile-link" style="color:var(--text-secondary)" data-i18n="nav_stories">Kisah</a>
+        <a href="#blog" class="text-lg mobile-link" style="color:var(--text-secondary)" data-i18n="nav_writings">Tulisan</a>
+        <a href="#event" class="mt-4 th-btn-primary px-5 py-3 rounded-full text-center font-medium mobile-link" data-i18n="nav_cta">Daftar Batch 8</a>
+    </div>
+    <div id="menuOverlay" class="fixed inset-0 z-40 hidden" style="background-color:var(--overlay)"></div>
+
+    <!-- ===== HERO ===== -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="breathe absolute w-[600px] h-[600px] md:w-[800px] md:h-[800px] rounded-full" style="background:var(--hero-circle-1);border:1px solid var(--hero-circle-border)"></div>
+            <div class="breathe-delay absolute w-[400px] h-[400px] md:w-[550px] md:h-[550px] rounded-full" style="background:var(--hero-circle-2);border:1px solid var(--hero-circle-border)"></div>
+            <div class="breathe absolute w-[200px] h-[200px] md:w-[300px] md:h-[300px] rounded-full" style="background:var(--hero-circle-3);border:1px solid var(--hero-circle-border)"></div>
+        </div>
+        <div class="absolute inset-0 nature-pattern opacity-50"></div>
+        <div class="relative z-10 text-center max-w-4xl mx-auto px-6 py-32">
+            <div class="fade-in-up"><p class="text-xs font-bold tracking-[0.3em] uppercase mb-6" style="color:var(--accent)">breaktime.id</p></div>
+            <h1 class="fade-in-up-delay font-serif text-5xl md:text-7xl lg:text-8xl font-semibold leading-[1.1] tracking-tight mb-6" style="color:var(--text-primary)">A Journey on<br><span class="italic" style="color:var(--accent)">Finding Magic</span></h1>
+            <p class="fade-in-up-delay2 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed" style="color:var(--text-secondary)" data-i18n="hero_desc">Ketika dunia memintamu terus melangkah, kami mengundangmu untuk berhenti sejenak. Breaktime adalah ruang lembut untuk menemukan jalan pulang — dari malam tergelap menuju cahaya yang sunyi.</p>
+            <div class="fade-in-up-delay2 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#products" class="group th-btn-primary px-8 py-3.5 rounded-full text-sm font-medium flex items-center gap-2"><span data-i18n="hero_cta1">Jelajahi Produk</span><i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i></a>
+                <a href="#about" class="th-btn-outline px-8 py-3.5 rounded-full text-sm font-medium border" data-i18n="hero_cta2">Pelajari Lebih Lanjut</a>
+            </div>
+        </div>
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 float-gentle"><div class="flex flex-col items-center gap-2" style="color:var(--text-faint)"><span class="text-xs tracking-widest uppercase" data-i18n="hero_scroll">Gulir perlahan</span><i data-lucide="chevron-down" class="w-4 h-4"></i></div></div>
+    </section>
+
+    <!-- ===== ABOUT ===== -->
+    <section id="about" class="relative py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div>
+                    <p class="text-xs font-bold tracking-[0.3em] uppercase mb-4" style="color:var(--accent)" data-i18n="about_tag">Tentang breaktime</p>
+                    <h2 class="font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight mb-8" style="color:var(--text-primary)"><span data-i18n="about_title_1">Bukan patah.</span><br><span class="italic" style="color:var(--text-muted)" data-i18n="about_title_2">Terobosan.</span></h2>
+                    <div class="space-y-6 leading-relaxed" style="color:var(--text-secondary)">
+                        <p data-i18n="about_p1">Kami percaya bahwa momen-momen tergelap bukan tanda kelemahan — melainkan undangan. Undangan untuk berhenti, merasakan, dan perlahan menemukan jalan kembali ke diri sendiri.</p>
+                        <p data-i18n="about_p2">Breaktime.id lahir dari kebenaran sederhana: istirahat bukanlah hadiah atas produktivitas. Ia adalah tanah dari mana segalanya tumbuh. Kami menenun psikologi, filsafat, neurosains, dan kebijaksanaan kuno — bukan sebagai alat optimasi, melainkan sebagai sahabat bagi jiwa.</p>
+                        <p data-i18n="about_p3">Kami tidak memperbaiki orang. Kami berjalan di samping mereka. Dan ketika seseorang siap, kami membantu mereka menemukan bahwa cahaya yang selama ini mereka cari telah ada di dalam diri mereka sejak awal.</p>
+                    </div>
+                    <div class="mt-10 grid grid-cols-2 gap-4">
+                        <div class="p-4 rounded-xl border" style="background:var(--accent-soft);border-color:var(--accent-border)"><i data-lucide="brain" class="w-5 h-5 mb-2" style="color:var(--accent)"></i><h4 class="text-sm font-semibold mb-0.5" style="color:var(--text-primary)">Neurosains</h4><p class="text-xs" style="color:var(--text-muted)" data-i18n="about_neuro_desc">Memahami ritme alami pembaruan otak</p></div>
+                        <div class="p-4 rounded-xl border" style="background:var(--accent-soft);border-color:var(--accent-border)"><i data-lucide="heart" class="w-5 h-5 mb-2" style="color:var(--accent)"></i><h4 class="text-sm font-semibold mb-0.5" style="color:var(--text-primary)">Psikologi</h4><p class="text-xs" style="color:var(--text-muted)" data-i18n="about_psych_desc">Pendekatan penuh kasih untuk penyembuhan batin</p></div>
+                        <div class="p-4 rounded-xl border" style="background:var(--accent-soft);border-color:var(--accent-border)"><i data-lucide="lamp" class="w-5 h-5 mb-2" style="color:var(--accent)"></i><h4 class="text-sm font-semibold mb-0.5" style="color:var(--text-primary)">Filsafat</h4><p class="text-xs" style="color:var(--text-muted)" data-i18n="about_philo_desc">Pertanyaan zaman yang membuka pintu baru</p></div>
+                        <div class="p-4 rounded-xl border" style="background:var(--accent-soft);border-color:var(--accent-border)"><i data-lucide="sun" class="w-5 h-5 mb-2" style="color:var(--accent)"></i><h4 class="text-sm font-semibold mb-0.5" style="color:var(--text-primary)" data-i18n="about_wisdom_title">Kebijaksanaan Kuno</h4><p class="text-xs" style="color:var(--text-muted)" data-i18n="about_wisdom_desc">Praktik yang membimbing jiwa selama ribuan tahun</p></div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="relative rounded-2xl overflow-hidden border shadow-2xl gentle-glow" style="border-color:var(--border-main);box-shadow:var(--shadow-lg)">
+                        <img src="https://picsum.photos/seed/forest-meditation-green/700/900.jpg" alt="Kontemplasi di alam" class="w-full h-[500px] lg:h-[650px] object-cover">
+                        <div class="absolute inset-0 th-img-gradient"></div>
+                        <div class="absolute bottom-8 left-8 right-8" style="background:var(--quote-bg);border-radius:12px;padding:16px 20px">
+                            <p class="font-serif italic text-lg leading-relaxed" style="color:var(--text-primary)">"Luka adalah tempat cahaya memasuki dirimu."</p>
+                            <p class="text-xs mt-2" style="color:var(--text-muted)">— Rumi</p>
+                        </div>
+                    </div>
+                    <div class="absolute -top-4 -right-4 w-24 h-24 rounded-full breathe" style="background:var(--accent-soft);border:1px solid var(--accent-border)"></div>
+                    <div class="absolute -bottom-4 -left-4 w-16 h-16 rounded-full breathe-delay" style="background:var(--accent-soft);border:1px solid var(--accent-border)"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PRODUCTS ===== -->
+    <section id="products" class="relative py-24 md:py-32" style="background-color:var(--bg-elevated)">
+        <div class="absolute inset-0 nature-pattern opacity-50"></div>
+        <div class="relative max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <p class="text-xs font-bold tracking-[0.3em] uppercase mb-4" style="color:var(--accent)" data-i18n="products_tag">Produk</p>
+                <h2 class="font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight mb-6" style="color:var(--text-primary)"><span data-i18n="products_title_1">Tiga cara pulang</span><br><span class="italic" style="color:var(--text-muted)" data-i18n="products_title_2">ke dirimu sendiri</span></h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Retreat -->
+                <div class="th-card rounded-2xl border p-6 flex flex-col" style="background:var(--bg-card);border-color:var(--border-main)">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:var(--accent-soft)"><i data-lucide="mountain-snow" class="w-6 h-6" style="color:var(--accent)"></i></div>
+                    <h3 class="font-serif text-xl font-semibold mb-1" style="color:var(--text-primary)">Breaktime Workshop & Retreat</h3>
+                    <p class="text-sm italic font-serif mb-4" style="color:var(--accent-text)">A Journey on Finding Magic</p>
+                    <p class="text-sm leading-relaxed mb-5" style="color:var(--text-secondary)" data-i18n="prod_retreat_desc">Jauhi hiruk-pikuk. Di ruang yang tenang dan dikelilingi alam, kamu akan dipandu lembut melalui praktik yang menghubungkan kembali dengan yang paling penting.</p>
+                    <ul class="space-y-2 mb-6 flex-1">
+                        <li class="flex items-start gap-2"><i data-lucide="leaf" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style="color:var(--accent)"></i><span class="text-xs" style="color:var(--text-secondary)" data-i18n="prod_r_f1">Meditasi terpandu & breathwork</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="users" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style="color:var(--accent)"></i><span class="text-xs" style="color:var(--text-secondary)" data-i18n="prod_r_f2">Berbagi dalam lingkaran kecil</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="book-open" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style="color:var(--accent)"></i><span class="text-xs" style="color:var(--text-secondary)" data-i18n="prod_r_f3">Sesi filsafat & neurosains</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="moon" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style="color:var(--accent)"></i><span class="text-xs" style="color:var(--text-secondary)" data-i18n="prod_r_f4">Jalan sunyi, jurnal, & perendaman alam</span></li>
+                    </ul>
+                    <a href="#event" class="th-btn-primary px-5 py-2.5 rounded-full text-sm font-medium text-center flex items-center justify-center gap-2"><span data-i18n="prod_r_cta">Lihat Event</span><i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>
+                </div>
+                <!-- Guide Path -->
+                <div class="th-card rounded-2xl border p-6 flex flex-col" style="background:var(--bg-card);border-color:var(--border-main)">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:var(--accent-soft)"><i data-lucide="compass" class="w-6 h-6" style="color:var(--accent)"></i></div>
+                    <h3 class="font-serif text-xl font-semibold mb-1" style="color:var(--text-primary)">Breaktime Guide Path</h3>
+                    <p class="text-sm italic font-serif mb-4" style="color:var(--accent-text)" data-i18n="prod_guide_sub">Menuntun yang lain menemukan cahaya</p>
+                    <p class="text-sm leading-relaxed mb-5" style="color:var(--text-secondary)" data-i18n="prod_guide_desc">Bagi mereka yang telah melewati kegelapan dan kini merasakan panggilan sunyi untuk berjalan di samping orang lain. Bukan tentang menjadi ahli — tapi memperdalam kapasitasmu menjaga ruang.</p>
+                    <ul class="space-y-2 mb-6 flex-1">
+                        <li class="flex items-start gap-2"><i data-lucide="graduation-cap" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style="color:var(--accent)"></i><span class="text-xs" style="color:var(--text-secondary)" data-i18n="prod_g_f1">Studi mendalam framework breaktime</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="brain" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style="color:var(--accent)"></i><span class="text-xs" style="color:var(--text-secondary)" data-i18n="prod_g_f2">Neurosains & psikologi lanjutan</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="handshake" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style="color:var(--accent)"></i><span class="text-xs" style="color:var(--text-secondary)" data-i18n="prod_g_f3">Keterampilan fasilitasi & space-holding</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="badge-check" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style="color:var(--accent)"></i><span class="text-xs" style="color:var(--text-secondary)" data-i18n="prod_g_f4">Sertifikasi Breaktime Guide Practitioner</span></li>
+                    </ul>
+                    <a href="#" class="px-5 py-2.5 border rounded-full text-sm font-medium text-center flex items-center justify-center gap-2 transition-all duration-300" style="border-color:var(--accent-border);color:var(--accent-text);background:var(--accent-soft)"><span data-i18n="prod_g_cta">Daftar Guide Path</span><i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>
+                </div>
+                <!-- Buku -->
+                <div class="th-card rounded-2xl border p-6 flex flex-col" style="background:var(--bg-card);border-color:var(--border-main)">
+                    <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:var(--accent-soft)"><i data-lucide="book-open-text" class="w-6 h-6" style="color:var(--accent)"></i></div>
+                    <h3 class="font-serif text-xl font-semibold mb-1" style="color:var(--text-primary)">Buku Breaktime</h3>
+                    <p class="text-sm italic font-serif mb-4" style="color:var(--accent-text)" data-i18n="prod_book_sub">Pendamping perjalanan pribadimu</p>
+                    <p class="text-sm leading-relaxed mb-5" style="color:var(--text-secondary)" data-i18n="prod_book_desc">Sebuah buku yang menemanimu memahami dan menjalani framework breaktime — kapan saja, di mana saja. Bukan buku yang harus dituntas, melainkan buku yang menunggumu di saat kamu siap.</p>
+                    <ul class="space-y-2 mb-6 flex-1">
+                        <li class="flex items-start gap-2"><i data-lucide="layers" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style="color:var(--accent)"></i><span class="text-xs" style="color:var(--text-secondary)" data-i18n="prod_b_f1">Framework breaktime yang utuh & terstruktur</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="pen-line" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style="color:var(--accent)"></i><span class="text-xs" style="color:var(--text-secondary)" data-i18n="prod_b_f2">Praktik refleksi & jurnal terintegrasi</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="sparkles" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style="color:var(--accent)"></i><span class="text-xs" style="color:var(--text-secondary)" data-i18n="prod_b_f3">Neurosains, psikologi, filsafat & kebijaksanaan kuno</span></li>
+                        <li class="flex items-start gap-2"><i data-lucide="clock" class="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style="color:var(--accent)"></i><span class="text-xs" style="color:var(--text-secondary)" data-i18n="prod_b_f4">Dikerjakan kapan saja, di mana saja</span></li>
+                    </ul>
+                    <a href="#" class="px-5 py-2.5 border rounded-full text-sm font-medium text-center flex items-center justify-center gap-2 transition-all duration-300" style="border-color:var(--accent-border);color:var(--accent-text);background:var(--accent-soft)"><span data-i18n="prod_b_cta">Pelajari Buku Ini</span><i data-lucide="arrow-right" class="w-3.5 h-3.5"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== UPCOMING EVENT ===== -->
+    <section id="event" class="relative py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <p class="text-xs font-bold tracking-[0.3em] uppercase mb-4" style="color:var(--accent)" data-i18n="event_tag">Event Mendatang</p>
+                <h2 class="font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight" style="color:var(--text-primary)"><span data-i18n="event_title_1">Langkah berikutnya</span><br><span class="italic" style="color:var(--text-muted)" data-i18n="event_title_2">menunggumu</span></h2>
+            </div>
+            <div class="relative rounded-2xl overflow-hidden border" style="border-color:var(--border-main);background:var(--bg-card);box-shadow:var(--shadow-lg)">
+                <div class="grid lg:grid-cols-2">
+                    <div class="relative h-72 lg:h-auto overflow-hidden">
+                        <img src="https://picsum.photos/seed/spiritual-camp-forest/800/700.jpg" alt="Breaktime Retreat" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 th-img-gradient"></div>
+                        <div class="absolute top-4 left-4"><span class="px-3 py-1.5 bg-green-600/90 backdrop-blur-sm rounded-full text-xs font-bold tracking-wider uppercase text-white">Batch 8</span></div>
+                    </div>
+                    <div class="p-8 md:p-10 flex flex-col justify-center">
+                        <p class="font-serif text-2xl md:text-3xl font-semibold mb-1" style="color:var(--text-primary)">Breaktime Workshop & Retreat</p>
+                        <p class="text-sm italic font-serif mb-6" style="color:var(--accent-text)">A Journey on Finding Magic</p>
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:var(--accent-soft)"><i data-lucide="calendar" class="w-4 h-4" style="color:var(--accent)"></i></div>
+                                <div><p class="text-xs" style="color:var(--text-muted)" data-i18n="event_date_label">Tanggal</p><p class="text-sm font-medium" style="color:var(--text-primary)">2–3 Mei 2026</p></div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:var(--accent-soft)"><i data-lucide="map-pin" class="w-4 h-4" style="color:var(--accent)"></i></div>
+                                <div><p class="text-xs" style="color:var(--text-muted)" data-i18n="event_venue_label">Tempat</p><p class="text-sm font-medium" style="color:var(--text-primary)">Hadwiwijaya Spiritual Camp, Malang</p></div>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:var(--accent-soft)"><i data-lucide="clock" class="w-4 h-4" style="color:var(--accent)"></i></div>
+                                <div><p class="text-xs" style="color:var(--text-muted)" data-i18n="event_dur_label">Durasi</p><p class="text-sm font-medium" style="color:var(--text-primary)">2 Hari, 1 Malam</p></div>
+                            </div>
+                        </div>
+                        <a href="#contact" class="th-btn-primary px-6 py-3 rounded-full text-sm font-medium text-center flex items-center justify-center gap-2 w-fit"><span data-i18n="event_cta">Pesan Tempatmu</span><i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section id="testimonials" class="relative py-24 md:py-32 overflow-hidden" style="background-color:var(--bg-elevated)">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <p class="text-xs font-bold tracking-[0.3em] uppercase mb-4" style="color:var(--accent)" data-i18n="testi_tag">Cerita tentang pulang</p>
+                <h2 class="font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight mb-6" style="color:var(--text-primary)"><span data-i18n="testi_title_1">Kata-kata dari mereka yang</span><br><span class="italic" style="color:var(--text-muted)" data-i18n="testi_title_2">menemukan jalan pulang</span></h2>
+            </div>
+            <div class="relative">
+                <div class="overflow-hidden rounded-2xl">
+                    <div id="testimonialTrack" class="testimonial-track flex">
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="grid md:grid-cols-3 gap-6">
+                                <div class="p-6 rounded-2xl border th-card" style="background:var(--bg-card);border-color:var(--border-main)">
+                                    <div class="flex gap-1 mb-3"><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i></div>
+                                    <p class="leading-relaxed mb-5 italic font-serif text-sm" style="color:var(--text-secondary)" data-i18n="testi_1_text">"Saya datang nyaris tak bisa menahan diri. Saya pulang merasa bisa bernapas lagi. Bukan karena semuanya sudah beres — tapi karena diperbolehkan untuk tidak baik-baik saja."</p>
+                                    <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center text-xs font-semibold text-white">A</div><div><p class="text-sm font-medium" style="color:var(--text-primary)" data-i18n="testi_1_name">Anindya</p><p class="text-xs" style="color:var(--text-muted)" data-i18n="testi_1_batch">Retreat Batch 6</p></div></div>
+                                </div>
+                                <div class="p-6 rounded-2xl border th-card" style="background:var(--bg-card);border-color:var(--border-main)">
+                                    <div class="flex gap-1 mb-3"><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i></div>
+                                    <p class="leading-relaxed mb-5 italic font-serif text-sm" style="color:var(--text-secondary)" data-i18n="testi_2_text">"Jalan sunyi mengubah sesuatu dalam diri saya yang tak bisa dijelaskan. Untuk pertama kali dalam bertahun-tahun, saya mendengar suara saya sendiri — bukan kebisingan ekspektasi."</p>
+                                    <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-xs font-semibold text-white">R</div><div><p class="text-sm font-medium" style="color:var(--text-primary)" data-i18n="testi_2_name">Ratna</p><p class="text-xs" style="color:var(--text-muted)" data-i18n="testi_2_batch">Retreat Batch 7</p></div></div>
+                                </div>
+                                <div class="p-6 rounded-2xl border th-card" style="background:var(--bg-card);border-color:var(--border-main)">
+                                    <div class="flex gap-1 mb-3"><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i></div>
+                                    <p class="leading-relaxed mb-5 italic font-serif text-sm" style="color:var(--text-secondary)" data-i18n="testi_3_text">"Guide Path tidak mengajarkan saya menyembuhkan orang. Ia mengajarkan saya bagaimana duduk bersama seseorang dalam kegelapan tanpa berusaha mengejar mereka ke cahaya. Itu layanan sejati."</p>
+                                    <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center text-xs font-semibold text-white">F</div><div><p class="text-sm font-medium" style="color:var(--text-primary)" data-i18n="testi_3_name">Fajar</p><p class="text-xs" style="color:var(--text-muted)" data-i18n="testi_3_batch">Lulusan Guide Path</p></div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full flex-shrink-0 px-4">
+                            <div class="grid md:grid-cols-3 gap-6">
+                                <div class="p-6 rounded-2xl border th-card" style="background:var(--bg-card);border-color:var(--border-main)">
+                                    <div class="flex gap-1 mb-3"><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i></div>
+                                    <p class="leading-relaxed mb-5 italic font-serif text-sm" style="color:var(--text-secondary)" data-i18n="testi_4_text">"Awalnya saya skeptis. Kira-kira ini acara motivasi lagi. Tapi para fasilitator menjaga ruang dengan begitu lembut — tanpa positivitas beracun, hanya kehadiran yang jujur."</p>
+                                    <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-xs font-semibold text-white">D</div><div><p class="text-sm font-medium" style="color:var(--text-primary)" data-i18n="testi_4_name">Dewi</p><p class="text-xs" style="color:var(--text-muted)" data-i18n="testi_4_batch">Retreat Batch 5</p></div></div>
+                                </div>
+                                <div class="p-6 rounded-2xl border th-card" style="background:var(--bg-card);border-color:var(--border-main)">
+                                    <div class="flex gap-1 mb-3"><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i></div>
+                                    <p class="leading-relaxed mb-5 italic font-serif text-sm" style="color:var(--text-secondary)" data-i18n="testi_5_text">"Setelah burnout, saya bahkan tak bisa menamai apa yang saya rasakan. Sesi neurosains membantu saya memahami — otak saya tidak rusak, ia sedang melindungi saya. Itu mengubah segalanya."</p>
+                                    <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-gradient-to-br from-rose-400 to-rose-600 flex items-center justify-center text-xs font-semibold text-white">B</div><div><p class="text-sm font-medium" style="color:var(--text-primary)" data-i18n="testi_5_name">Bayu</p><p class="text-xs" style="color:var(--text-muted)" data-i18n="testi_5_batch">Retreat Batch 7</p></div></div>
+                                </div>
+                                <div class="p-6 rounded-2xl border th-card" style="background:var(--bg-card);border-color:var(--border-main)">
+                                    <div class="flex gap-1 mb-3"><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i><i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i></div>
+                                    <p class="leading-relaxed mb-5 italic font-serif text-sm" style="color:var(--text-secondary)" data-i18n="testi_6_text">"Sebagai terapis, Guide Path menambah dimensi yang tak pernah saya pelajari di sekolah — bagaimana benar-benar beristirahat sendiri, agar bisa menawarkan istirahat kepada orang lain. Sangat merendahkan."</p>
+                                    <div class="flex items-center gap-3"><div class="w-9 h-9 rounded-full bg-gradient-to-br from-cyan-400 to-cyan-600 flex items-center justify-center text-xs font-semibold text-white">M</div><div><p class="text-sm font-medium" style="color:var(--text-primary)" data-i18n="testi_6_name">Maya</p><p class="text-xs" style="color:var(--text-muted)" data-i18n="testi_6_batch">Lulusan Guide Path</p></div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center gap-4 mt-8">
+                    <button id="prevTestimonial" class="w-10 h-10 rounded-full border flex items-center justify-center" style="border-color:var(--border-main);color:var(--text-muted)"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
+                    <div class="flex gap-2"><div id="dot0" class="w-2 h-2 rounded-full" style="background:var(--accent)"></div><div id="dot1" class="w-2 h-2 rounded-full" style="background:var(--text-faint)"></div></div>
+                    <button id="nextTestimonial" class="w-10 h-10 rounded-full border flex items-center justify-center" style="border-color:var(--border-main);color:var(--text-muted)"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STATS ===== -->
+    <section class="relative py-16 border-y" style="border-color:var(--border-main)">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div><p class="font-serif text-3xl md:text-4xl font-semibold mb-2" style="color:var(--accent)">500+</p><p class="text-sm" style="color:var(--text-muted)" data-i18n="stat_1">Jiwa yang dijamah lembut</p></div>
+                <div><p class="font-serif text-3xl md:text-4xl font-semibold mb-2" style="color:var(--accent)">7</p><p class="text-sm" style="color:var(--text-muted)" data-i18n="stat_2">Batch telah berjalan</p></div>
+                <div><p class="font-serif text-3xl md:text-4xl font-semibold mb-2" style="color:var(--accent)">48</p><p class="text-sm" style="color:var(--text-muted)" data-i18n="stat_3">Guide tersertifikasi</p></div>
+                <div><p class="font-serif text-3xl md:text-4xl font-semibold mb-2" style="color:var(--accent)">∞</p><p class="text-sm" style="color:var(--text-muted)" data-i18n="stat_4">Transformasi sunyi</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BLOG ===== -->
+    <section id="blog" class="relative py-24 md:py-32">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
+                <div>
+                    <p class="text-xs font-bold tracking-[0.3em] uppercase mb-4" style="color:var(--accent)" data-i18n="blog_tag">Tulisan</p>
+                    <h2 class="font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight" style="color:var(--text-primary)"><span data-i18n="blog_title_1">Pikiran untuk</span><br><span class="italic" style="color:var(--text-muted)" data-i18n="blog_title_2">jam-jam sunyi</span></h2>
+                </div>
+                <a href="#" class="group text-sm flex items-center gap-2" style="color:var(--text-muted)"><span data-i18n="blog_all">Baca semua tulisan</span><i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i></a>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <article class="blog-card group rounded-2xl overflow-hidden border th-card cursor-pointer" style="background:var(--bg-card);border-color:var(--border-main)">
+                    <div class="overflow-hidden h-48"><img src="https://picsum.photos/seed/burnout-rest-forest/600/400.jpg" alt="" class="blog-img w-full h-full object-cover transition-transform duration-700"></div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-3 mb-3"><span class="px-2.5 py-1 rounded-full text-xs font-medium" style="background:var(--accent-soft);color:var(--accent-text)">Psikologi</span><span class="text-xs" style="color:var(--text-muted)">Des 2024</span></div>
+                        <h3 class="font-serif text-lg font-semibold mb-2" style="color:var(--text-primary)" data-i18n="blog_1_title">Mengapa Burnout-mu Bukan Kegagalan</h3>
+                        <p class="text-sm leading-relaxed line-clamp-3" style="color:var(--text-muted)" data-i18n="blog_1_desc">Kelelahanmu bukan bug — ia adalah bisikan tubuh tentang apa yang pikiranmu terlalu bangku untuk katakan.</p>
+                    </div>
+                </article>
+                <article class="blog-card group rounded-2xl overflow-hidden border th-card cursor-pointer" style="background:var(--bg-card);border-color:var(--border-main)">
+                    <div class="overflow-hidden h-48"><img src="https://picsum.photos/seed/ancient-wisdom-nature/600/400.jpg" alt="" class="blog-img w-full h-full object-cover transition-transform duration-700"></div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-3 mb-3"><span class="px-2.5 py-1 rounded-full text-xs font-medium" style="background:var(--accent-soft);color:var(--accent-text)" data-i18n="blog_cat_wisdom">Kebijaksanaan Kuno</span><span class="text-xs" style="color:var(--text-muted)">Nov 2024</span></div>
+                        <h3 class="font-serif text-lg font-semibold mb-2" style="color:var(--text-primary)" data-i18n="blog_2_title">Apa yang Dipahami Kaum Stoa tentang Istirahat</h3>
+                        <p class="text-sm leading-relaxed line-clamp-3" style="color:var(--text-muted)" data-i18n="blog_2_desc">Jauh sebelum neurosains memetakan jaringan mode bawaan, filsuf kuno memahami kekuatan jeda yang disengaja.</p>
+                    </div>
+                </article>
+                <article class="blog-card group rounded-2xl overflow-hidden border th-card cursor-pointer" style="background:var(--bg-card);border-color:var(--border-main)">
+                    <div class="overflow-hidden h-48"><img src="https://picsum.photos/seed/neuroscience-brain-green/600/400.jpg" alt="" class="blog-img w-full h-full object-cover transition-transform duration-700"></div>
+                    <div class="p-5">
+                        <div class="flex items-center gap-3 mb-3"><span class="px-2.5 py-1 rounded-full text-xs font-medium" style="background:var(--accent-soft);color:var(--accent-text)">Neurosains</span><span class="text-xs" style="color:var(--text-muted)">Okt 2024</span></div>
+                        <h3 class="font-serif text-lg font-semibold mb-2" style="color:var(--text-primary)" data-i18n="blog_3_title">Otakmu saat Breaktime: Sains yang Lembut</h3>
+                        <p class="text-sm leading-relaxed line-clamp-3" style="color:var(--text-muted)" data-i18n="blog_3_desc">Apa yang terjadi di otakmu saat kamu benar-benar istirahat? Bukan tidur — istirahat. Sainsnya mungkin mengejutkanmu.</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT & SOCIAL ===== -->
+    <section id="contact" class="relative py-24 md:py-32" style="background-color:var(--bg-elevated)">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="relative rounded-2xl overflow-hidden border p-10 md:p-16 text-center" style="border-color:var(--border-main);background:var(--bg-card)">
+                <div class="absolute top-10 left-10 w-32 h-32 rounded-full breathe" style="background:var(--accent-soft);border:1px solid var(--accent-border)"></div>
+                <div class="absolute bottom-10 right-10 w-24 h-24 rounded-full breathe-delay" style="background:var(--accent-soft);border:1px solid var(--accent-border)"></div>
+                <div class="relative z-10">
+                    <p class="text-xs font-bold tracking-[0.3em] uppercase mb-4" style="color:var(--accent)" data-i18n="social_tag">Tetap terhubung</p>
+                    <h2 class="font-serif text-3xl md:text-5xl font-semibold leading-tight tracking-tight mb-6" style="color:var(--text-primary)"><span data-i18n="social_title_1">Obrolan berlanjut</span><br><span class="italic" style="color:var(--text-muted)" data-i18n="social_title_2">dengan lembut</span></h2>
+                    <p class="leading-relaxed max-w-2xl mx-auto mb-10" style="color:var(--text-secondary)" data-i18n="social_desc">Kami berbagi pikiran yang sunyi, pengingat harian untuk bernapas, dan ruang untuk percakapan jujur. Tanpa hiruk-pikuk. Tanpa algoritma. Hanya komunitas yang belajar menjadi manusia bersama.</p>
+
+                    <div class="mb-12 p-6 rounded-2xl border max-w-lg mx-auto" style="border-color:var(--accent-border);background:var(--accent-soft)">
+                        <p class="text-sm mb-2" style="color:var(--text-muted)" data-i18n="contact_ready">Siap bergabung di Batch 8?</p>
+                        <p class="font-serif text-xl font-semibold mb-3" style="color:var(--text-primary)" data-i18n="contact_person">Pelayan Breaktime</p>
+                        <a href="https://wa.me/" class="inline-flex items-center gap-2 th-btn-primary px-6 py-3 rounded-full text-sm font-medium">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            <span data-i18n="contact_wa">Hubungi via WhatsApp</span>
+                        </a>
+                    </div>
+
+                    <div class="flex flex-wrap items-center justify-center gap-4 mb-12">
+                        <a href="#" class="group flex items-center gap-3 px-5 py-2.5 rounded-full border" style="border-color:var(--border-main);background:var(--bg-base)">
+                            <svg class="w-5 h-5" style="color:var(--text-muted)" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                            <span class="text-sm" style="color:var(--text-secondary)">@breaktime.id</span>
+                        </a>
+                        <a href="#" class="group flex items-center gap-3 px-5 py-2.5 rounded-full border" style="border-color:var(--border-main);background:var(--bg-base)">
+                            <svg class="w-5 h-5" style="color:var(--text-muted)" fill="currentColor" viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.43 6.34 6.34 0 001.87-4.51V8.73a8.19 8.19 0 004.71 1.49v-3.4a4.85 4.85 0 01-1-.13z"/></svg>
+                            <span class="text-sm" style="color:var(--text-secondary)">TikTok</span>
+                        </a>
+                        <a href="#" class="group flex items-center gap-3 px-5 py-2.5 rounded-full border" style="border-color:var(--border-main);background:var(--bg-base)">
+                            <svg class="w-5 h-5" style="color:var(--text-muted)" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                            <span class="text-sm" style="color:var(--text-secondary)">YouTube</span>
+                        </a>
+                    </div>
+
+                    <div class="max-w-md mx-auto">
+                        <p class="text-sm mb-4" style="color:var(--text-muted)" data-i18n="newsletter_desc">Surat yang sunyi, sesekali. Tanpa spam — hanya cahaya. 🌿</p>
+                        <form id="newsletterForm" class="flex gap-2" onsubmit="return false;">
+                            <input type="email" id="emailInput" class="flex-1 px-4 py-3 rounded-full text-sm th-input border" data-i18n-placeholder="newsletter_placeholder" placeholder="email@kamu.com">
+                            <button type="button" onclick="subscribeNewsletter()" class="th-btn-primary px-6 py-3 rounded-full text-sm font-medium" data-i18n="newsletter_cta">Berlangganan</button>
+                        </form>
+                        <div id="newsletterMsg" class="mt-3 text-sm hidden" style="color:var(--accent)"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="border-t py-16" style="border-color:var(--border-main)">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div class="md:col-span-2">
+                    <a href="#" class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-green-600 flex items-center justify-center"><i data-lucide="pause" class="w-4 h-4 text-white"></i></div>
+                        <span class="text-lg font-serif font-semibold tracking-tight" style="color:var(--text-primary)">breaktime<span style="color:var(--accent)">.id</span></span>
+                    </a>
+                    <p class="text-sm leading-relaxed max-w-sm" style="color:var(--text-muted)" data-i18n="footer_desc">Kerangka lembut untuk membantumu berhenti sejenak, bernapas, dan menemukan jalan pulang. Berakar pada kasih, dibimbing oleh kebijaksanaan, dijamah oleh komunitas.</p>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold tracking-widest uppercase mb-4" style="color:var(--text-secondary)" data-i18n="footer_explore">Jelajahi</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#about" class="text-sm hover:opacity-80" style="color:var(--text-muted)" data-i18n="nav_about">Tentang</a></li>
+                        <li><a href="#products" class="text-sm hover:opacity-80" style="color:var(--text-muted)" data-i18n="nav_products">Produk</a></li>
+                        <li><a href="#event" class="text-sm hover:opacity-80" style="color:var(--text-muted)" data-i18n="nav_event">Event</a></li>
+                        <li><a href="#blog" class="text-sm hover:opacity-80" style="color:var(--text-muted)" data-i18n="nav_writings">Tulisan</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-xs font-bold tracking-widest uppercase mb-4" style="color:var(--text-secondary)" data-i18n="footer_connect">Terhubung</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="text-sm hover:opacity-80" style="color:var(--text-muted)">Instagram</a></li>
+                        <li><a href="#" class="text-sm hover:opacity-80" style="color:var(--text-muted)">WhatsApp</a></li>
+                        <li><a href="#" class="text-sm hover:opacity-80" style="color:var(--text-muted)">TikTok</a></li>
+                        <li><a href="#" class="text-sm hover:opacity-80" style="color:var(--text-muted)">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t pt-8 flex flex-col md:flex-row items-center justify-between gap-4" style="border-color:var(--border-main)">
+                <p class="text-xs" style="color:var(--text-faint)">© 2025 breaktime.id. All rights reserved.</p>
+                <p class="text-xs italic font-serif" style="color:var(--text-faint)" data-i18n="footer_closing">Tarik napas. Kamu sudah cukup. 🌿</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+    const T={
+        id:{
+            nav_about:"Tentang",nav_products:"Produk",nav_event:"Event",nav_stories:"Kisah",nav_writings:"Tulisan",nav_cta:"Daftar Batch 8",
+            hero_desc:"Ketika dunia memintamu terus melangkah, kami mengundangmu untuk berhenti sejenak. Breaktime adalah ruang lembut untuk menemukan jalan pulang — dari malam tergelap menuju cahaya yang sunyi.",
+            hero_cta1:"Jelajahi Produk",hero_cta2:"Pelajari Lebih Lanjut",hero_scroll:"Gulir perlahan",
+            about_tag:"Tentang breaktime",about_title_1:"Bukan patah.",about_title_2:"Terobosan.",
+            about_p1:"Kami percaya bahwa momen-momen tergelap bukan tanda kelemahan — melainkan undangan. Undangan untuk berhenti, merasakan, dan perlahan menemukan jalan kembali ke diri sendiri.",
+            about_p2:"Breaktime.id lahir dari kebenaran sederhana: istirahat bukanlah hadiah atas produktivitas. Ia adalah tanah dari mana segalanya tumbuh. Kami menenun psikologi, filsafat, neurosains, dan kebijaksanaan kuno — bukan sebagai alat optimasi, melainkan sebagai sahabat bagi jiwa.",
+            about_p3:"Kami tidak memperbaiki orang. Kami berjalan di samping mereka. Dan ketika seseorang siap, kami membantu mereka menemukan bahwa cahaya yang selama ini mereka cari telah ada di dalam diri mereka sejak awal.",
+            about_neuro_desc:"Memahami ritme alami pembaruan otak",about_psych_desc:"Pendekatan penuh kasih untuk penyembuhan batin",about_philo_desc:"Pertanyaan zaman yang membuka pintu baru",about_wisdom_title:"Kebijaksanaan Kuno",about_wisdom_desc:"Praktik yang membimbing jiwa selama ribuan tahun",
+            products_tag:"Produk",products_title_1:"Tiga cara pulang",products_title_2:"ke dirimu sendiri",
+            prod_retreat_desc:"Jauhi hiruk-pikuk. Di ruang yang tenang dan dikelilingi alam, kamu akan dipandu lembut melalui praktik yang menghubungkan kembali dengan yang paling penting.",
+            prod_r_f1:"Meditasi terpandu & breathwork",prod_r_f2:"Berbagi dalam lingkaran kecil",prod_r_f3:"Sesi filsafat & neurosains",prod_r_f4:"Jalan sunyi, jurnal, & perendaman alam",prod_r_cta:"Lihat Event",
+            prod_guide_sub:"Menuntun yang lain menemukan cahaya",
+            prod_guide_desc:"Bagi mereka yang telah melewati kegelapan dan kini merasakan panggilan sunyi untuk berjalan di samping orang lain. Bukan tentang menjadi ahli — tapi memperdalam kapasitasmu menjaga ruang.",
+            prod_g_f1:"Studi mendalam framework breaktime",prod_g_f2:"Neurosains & psikologi lanjutan",prod_g_f3:"Keterampilan fasilitasi & space-holding",prod_g_f4:"Sertifikasi Breaktime Guide Practitioner",prod_g_cta:"Daftar Guide Path",
+            prod_book_sub:"Pendamping perjalanan pribadimu",
+            prod_book_desc:"Sebuah buku yang menemanimu memahami dan menjalani framework breaktime — kapan saja, di mana saja. Bukan buku yang harus dituntas, melainkan buku yang menunggumu di saat kamu siap.",
+            prod_b_f1:"Framework breaktime yang utuh & terstruktur",prod_b_f2:"Praktik refleksi & jurnal terintegrasi",prod_b_f3:"Neurosains, psikologi, filsafat & kebijaksanaan kuno",prod_b_f4:"Dikerjakan kapan saja, di mana saja",prod_b_cta:"Pelajari Buku Ini",
+            event_tag:"Event Mendatang",event_title_1:"Langkah berikutnya",event_title_2:"menunggumu",
+            event_date_label:"Tanggal",event_venue_label:"Tempat",event_dur_label:"Durasi",event_cta:"Pesan Tempatmu",
+            testi_tag:"Cerita tentang pulang",testi_title_1:"Kata-kata dari mereka yang",testi_title_2:"menemukan jalan pulang",
+            testi_1_text:"\"Saya datang nyaris tak bisa menahan diri. Saya pulang merasa bisa bernapas lagi. Bukan karena semuanya sudah beres — tapi karena diperbolehkan untuk tidak baik-baik saja.\"",testi_1_name:"Anindya",testi_1_batch:"Retreat Batch 6",
+            testi_2_text:"\"Jalan sunyi mengubah sesuatu dalam diri saya yang tak bisa dijelaskan. Untuk pertama kali dalam bertahun-tahun, saya mendengar suara saya sendiri — bukan kebisingan ekspektasi.\"",testi_2_name:"Ratna",testi_2_batch:"Retreat Batch 7",
+            testi_3_text:"\"Guide Path tidak mengajarkan saya menyembuhkan orang. Ia mengajarkan saya bagaimana duduk bersama seseorang dalam kegelapan tanpa berusaha mengejar mereka ke cahaya. Itu layanan sejati.\"",testi_3_name:"Fajar",testi_3_batch:"Lulusan Guide Path",
+            testi_4_text:"\"Awalnya saya skeptis. Kira-kira ini acara motivasi lagi. Tapi para fasilitator menjaga ruang dengan begitu lembut — tanpa positivitas beracun, hanya kehadiran yang jujur.\"",testi_4_name:"Dewi",testi_4_batch:"Retreat Batch 5",
+            testi_5_text:"\"Setelah burnout, saya bahkan tak bisa menamai apa yang saya rasakan. Sesi neurosains membantu saya memahami — otak saya tidak rusak, ia sedang melindungi saya. Itu mengubah segalanya.\"",testi_5_name:"Bayu",testi_5_batch:"Retreat Batch 7",
+            testi_6_text:"\"Sebagai terapis, Guide Path menambah dimensi yang tak pernah saya pelajari di sekolah — bagaimana benar-benar beristirahat sendiri, agar bisa menawarkan istirahat kepada orang lain. Sangat merendahkan.\"",testi_6_name:"Maya",testi_6_batch:"Lulusan Guide Path",
+            stat_1:"Jiwa yang dijamah lembut",stat_2:"Batch telah berjalan",stat_3:"Guide tersertifikasi",stat_4:"Transformasi sunyi",
+            blog_tag:"Tulisan",blog_title_1:"Pikiran untuk",blog_title_2:"jam-jam sunyi",blog_all:"Baca semua tulisan",blog_cat_wisdom:"Kebijaksanaan Kuno",
+            blog_1_title:"Mengapa Burnout-mu Bukan Kegagalan",blog_1_desc:"Kelelahanmu bukan bug — ia adalah bisikan tubuh tentang apa yang pikiranmu terlalu bangku untuk katakan.",
+            blog_2_title:"Apa yang Dipahami Kaum Stoa tentang Istirahat",blog_2_desc:"Jauh sebelum neurosains memetakan jaringan mode bawaan, filsuf kuno memahami kekuatan jeda yang disengaja.",
+            blog_3_title:"Otakmu saat Breaktime: Sains yang Lembut",blog_3_desc:"Apa yang terjadi di otakmu saat kamu benar-benar istirahat? Bukan tidur — istirahat. Sainsnya mungkin mengejutkanmu.",
+            social_tag:"Tetap terhubung",social_title_1:"Obrolan berlanjut",social_title_2:"dengan lembut",
+            social_desc:"Kami berbagi pikiran yang sunyi, pengingat harian untuk bernapas, dan ruang untuk percakapan jujur. Tanpa hiruk-pikuk. Tanpa algoritma. Hanya komunitas yang belajar menjadi manusia bersama.",
+            contact_ready:"Siap bergabung di Batch 8?",contact_person:"Pelayan Breaktime",contact_wa:"Hubungi via WhatsApp",
+            newsletter_desc:"Surat yang sunyi, sesekali. Tanpa spam — hanya cahaya. 🌿",newsletter_placeholder:"email@kamu.com",newsletter_cta:"Berlangganan",
+            newsletter_success:"Terima kasih. Surat yang sunyi akan segera menemukanmu. 🌿",newsletter_error:"Silakan masukkan alamat email yang valid.",
+            footer_desc:"Kerangka lembut untuk membantumu berhenti sejenak, bernapas, dan menemukan jalan pulang. Berakar pada kasih, dibimbing oleh kebijaksanaan, dijamah oleh komunitas.",
+            footer_explore:"Jelajahi",footer_connect:"Terhubung",footer_closing:"Tarik napas. Kamu sudah cukup. 🌿"
+        },
+        en:{
+            nav_about:"About",nav_products:"Products",nav_event:"Event",nav_stories:"Stories",nav_writings:"Writings",nav_cta:"Join Batch 8",
+            hero_desc:"When the world asks you to keep going, we invite you to pause. Breaktime is a gentle space to find your way back — from the darkest nights to your own quiet light.",
+            hero_cta1:"Explore Products",hero_cta2:"Learn More",hero_scroll:"Scroll gently",
+            about_tag:"About breaktime",about_title_1:"Not broken.",about_title_2:"Breaking through.",
+            about_p1:"We believe that the darkest moments are not signs of weakness — they are invitations. Invitations to stop, to feel, and to slowly find your way back to yourself.",
+            about_p2:"Breaktime.id was born from a simple truth: rest is not a reward for productivity. It is the ground from which everything else grows. We weave together psychology, philosophy, neuroscience, and ancient wisdom — not as tools for optimization, but as companions for the soul.",
+            about_p3:"We don't fix people. We walk beside them. And when someone is ready, we help them discover that the light they've been searching for has been within them all along.",
+            about_neuro_desc:"Understanding the brain's natural rhythms of renewal",about_psych_desc:"Compassionate approaches to inner healing",about_philo_desc:"Timeless questions that open new doorways",about_wisdom_title:"Ancient Wisdom",about_wisdom_desc:"Practices that have guided souls for millennia",
+            products_tag:"Products",products_title_1:"Three ways to come",products_title_2:"home to yourself",
+            prod_retreat_desc:"Step away from the noise. In a quiet, held space surrounded by nature, you'll be gently guided through practices that reconnect you with what matters most.",
+            prod_r_f1:"Guided meditation & breathwork",prod_r_f2:"Small circle sharing",prod_r_f3:"Philosophy & neuroscience sessions",prod_r_f4:"Silence walk, journaling & nature immersion",prod_r_cta:"See Event",
+            prod_guide_sub:"Guiding others to find their light",
+            prod_guide_desc:"For those who've walked through darkness and now feel the quiet calling to walk beside others. Not about becoming an expert — but deepening your capacity to hold space.",
+            prod_g_f1:"In-depth study of breaktime framework",prod_g_f2:"Advanced neuroscience & psychology",prod_g_f3:"Facilitation skills & space-holding",prod_g_f4:"Breaktime Guide Practitioner certification",prod_g_cta:"Apply for Guide Path",
+            prod_book_sub:"Your personal journey companion",
+            prod_book_desc:"A book that accompanies you in understanding and living the breaktime framework — anytime, anywhere. Not a book to finish, but a book that waits for you when you're ready.",
+            prod_b_f1:"Complete & structured breaktime framework",prod_b_f2:"Integrated reflection practices & journal",prod_b_f3:"Neuroscience, psychology, philosophy & ancient wisdom",prod_b_f4:"Work through it anytime, anywhere",prod_b_cta:"Learn About This Book",
+            event_tag:"Upcoming Event",event_title_1:"The next step",event_title_2:"is waiting for you",
+            event_date_label:"Date",event_venue_label:"Venue",event_dur_label:"Duration",event_cta:"Reserve Your Space",
+            testi_tag:"Stories of returning",testi_title_1:"Words from those who",testi_title_2:"found their way back",
+            testi_1_text:"\"I came in barely holding together. I left feeling like I could finally breathe again. Not because everything was fixed — but because I was allowed to not be okay.\"",testi_1_name:"Anindya",testi_1_batch:"Retreat Batch 6",
+            testi_2_text:"\"The silence walk changed something in me I can't explain. For the first time in years, I heard my own voice — not the noise of expectations.\"",testi_2_name:"Ratna",testi_2_batch:"Retreat Batch 7",
+            testi_3_text:"\"The Guide Path didn't teach me how to heal people. It taught me how to sit with someone in their darkness without trying to rush them into light. That's real service.\"",testi_3_name:"Fajar",testi_3_batch:"Guide Path Graduate",
+            testi_4_text:"\"I was skeptical. Thought this would be another motivational thing. But the facilitators held the space with such gentleness — no toxic positivity, just honest presence.\"",testi_4_name:"Dewi",testi_4_batch:"Retreat Batch 5",
+            testi_5_text:"\"After burnout, I couldn't even name what I felt. The neuroscience sessions helped me understand — my brain wasn't broken, it was protecting me. That changed everything.\"",testi_5_name:"Bayu",testi_5_batch:"Retreat Batch 7",
+            testi_6_text:"\"As a therapist, the Guide Path added a dimension I never learned in school — how to truly rest myself, so I can offer rest to others. Profoundly humbling.\"",testi_6_name:"Maya",testi_6_batch:"Guide Path Graduate",
+            stat_1:"Souls gently held",stat_2:"Batches completed",stat_3:"Guides certified",stat_4:"Quiet transformations",
+            blog_tag:"Writings",blog_title_1:"Thoughts for the",blog_title_2:"quiet hours",blog_all:"Read all writings",blog_cat_wisdom:"Ancient Wisdom",
+            blog_1_title:"Why Your Burnout Isn't a Failure",blog_1_desc:"Your exhaustion is not a bug — it's your body whispering what your mind has been too proud to say.",
+            blog_2_title:"What the Stoics Knew About Rest",blog_2_desc:"Long before neuroscience mapped the default mode network, ancient philosophers understood the power of intentional pause.",
+            blog_3_title:"Your Brain on Breaktime: A Gentle Science",blog_3_desc:"What happens in your brain when you truly rest? Not sleep — rest. The science might surprise you.",
+            social_tag:"Stay connected",social_title_1:"The conversation",social_title_2:"continues gently",
+            social_desc:"We share quiet thoughts, daily reminders to breathe, and spaces for honest conversations. No noise. No algorithms. Just a community learning to be human together.",
+            contact_ready:"Ready to join Batch 8?",contact_person:"Pelayan Breaktime",contact_wa:"Contact via WhatsApp",
+            newsletter_desc:"A quiet letter, once in a while. No spam — just light. 🌿",newsletter_placeholder:"your@email.com",newsletter_cta:"Subscribe",
+            newsletter_success:"Thank you. A quiet letter will find you soon. 🌿",newsletter_error:"Please enter a valid email address.",
+            footer_desc:"A gentle framework to help you pause, breathe, and find your way back. Rooted in compassion, guided by wisdom, held by community.",
+            footer_explore:"Explore",footer_connect:"Connect",footer_closing:"Take a breath. You're doing enough. 🌿"
+        }
+    };
+
+    let currentLang='id';
+    function applyTranslations(){const l=T[currentLang];document.querySelectorAll('[data-i18n]').forEach(e=>{const k=e.getAttribute('data-i18n');if(l[k]!==undefined)e.textContent=l[k]});document.querySelectorAll('[data-i18n-placeholder]').forEach(e=>{const k=e.getAttribute('data-i18n-placeholder');if(l[k]!==undefined)e.placeholder=l[k]});document.documentElement.lang=currentLang;const nl=currentLang==='id'?'EN':'ID';document.getElementById('langLabel').textContent=nl;document.getElementById('langLabelMobile').textContent=nl}
+    function toggleLang(){currentLang=currentLang==='id'?'en':'id';applyTranslations()}
+
+    let currentTheme='light';
+    function applyTheme(t){currentTheme=t;document.documentElement.setAttribute('data-theme',t);const n=t==='dark'?'sun':'moon';document.getElementById('themeIcon').setAttribute('data-lucide',n);document.getElementById('themeIconMobile').setAttribute('data-lucide',n);lucide.createIcons()}
+    function toggleTheme(){applyTheme(currentTheme==='light'?'dark':'light')}
+
+    document.addEventListener('DOMContentLoaded',()=>{
+        lucide.createIcons();
+        document.getElementById('langToggle').addEventListener('click',toggleLang);
+        document.getElementById('langToggleMobile').addEventListener('click',toggleLang);
+        document.getElementById('themeToggle').addEventListener('click',toggleTheme);
+        document.getElementById('themeToggleMobile').addEventListener('click',toggleTheme);
+        applyTranslations();applyTheme('light');
+
+        const nb=document.getElementById('navbar');
+        window.addEventListener('scroll',()=>{window.scrollY>50?nb.classList.add('navbar-scrolled'):nb.classList.remove('navbar-scrolled')});
+
+        const mm=document.getElementById('mobileMenu'),mo=document.getElementById('menuOverlay');
+        function cm(){mm.classList.remove('open');mo.classList.add('hidden');document.body.style.overflow=''}
+        document.getElementById('menuBtn').addEventListener('click',()=>{mm.classList.add('open');mo.classList.remove('hidden');document.body.style.overflow='hidden'});
+        document.getElementById('closeMenu').addEventListener('click',cm);mo.addEventListener('click',cm);
+        document.querySelectorAll('.mobile-link').forEach(l=>l.addEventListener('click',cm));
+
+        let cs=0;const ts=2,tr=document.getElementById('testimonialTrack');
+        function uc(){tr.style.transform=`translateX(-${cs*100}%)`;for(let i=0;i<ts;i++){document.getElementById(`dot${i}`).style.background=i===cs?'var(--accent)':'var(--text-faint)'}}
+        document.getElementById('prevTestimonial').addEventListener('click',()=>{cs=(cs-1+ts)%ts;uc()});
+        document.getElementById('nextTestimonial').addEventListener('click',()=>{cs=(cs+1)%ts;uc()});
+        setInterval(()=>{cs=(cs+1)%ts;uc()},8000);
+
+        window.subscribeNewsletter=function(){const e=document.getElementById('emailInput').value,m=document.getElementById('newsletterMsg'),l=T[currentLang];if(!e||!e.includes('@')){m.textContent=l.newsletter_error;m.style.color='var(--text-muted)'}else{m.textContent=l.newsletter_success;m.style.color='var(--accent)';document.getElementById('emailInput').value=''}m.classList.remove('hidden');setTimeout(()=>m.classList.add('hidden'),5000)};
+
+        const obs=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.style.opacity='1';en.target.style.transform='translateY(0)'}})},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
+        document.querySelectorAll('section').forEach((s,i)=>{if(i===0)return;s.style.opacity='0';s.style.transform='translateY(20px)';s.style.transition='opacity 0.8s ease, transform 0.8s ease';obs.observe(s)});
+    });
+    </script>
+</body>
+</html>
