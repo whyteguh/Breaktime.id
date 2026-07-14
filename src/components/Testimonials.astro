@@ -1,7 +1,18 @@
 ---
-import { testimonials } from '../lib/site';
+import { getCollection, render } from 'astro:content';
 
-const pages = [testimonials.id.slice(0, 3), testimonials.id.slice(3, 6)];
+const entries = (await getCollection('testimonials', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const rendered = await Promise.all(
+  entries.map(async (t) => ({ entry: t, Content: (await render(t)).Content }))
+);
+
+const perPage = 3;
+const pages = [];
+for (let i = 0; i < rendered.length; i += perPage) {
+  pages.push(rendered.slice(i, i + perPage));
+}
 ---
 <section id="testimonials" class="relative py-24 md:py-32 overflow-hidden" style="background-color:var(--bg-elevated)">
     <div class="max-w-7xl mx-auto px-6">
@@ -15,15 +26,15 @@ const pages = [testimonials.id.slice(0, 3), testimonials.id.slice(3, 6)];
                     {pages.map((page) => (
                         <div class="w-full flex-shrink-0 px-4">
                             <div class="grid md:grid-cols-3 gap-6">
-                                {page.map((t) => (
+                                {page.map(({ entry, Content }) => (
                                     <div class="p-6 rounded-2xl border th-card" style="background:var(--bg-card);border-color:var(--border-main)">
                                         <div class="flex gap-1 mb-3">
                                             {[...Array(5)].map(() => <i data-lucide="star" class="w-3.5 h-3.5 fill-current" style="color:var(--star-color)"></i>)}
                                         </div>
-                                        <p class="leading-relaxed mb-5 italic font-serif text-sm" style="color:var(--text-secondary)">{t.text}</p>
+                                        <div class="leading-relaxed mb-5 italic font-serif text-sm" style="color:var(--text-secondary)"><Content /></div>
                                         <div class="flex items-center gap-3">
-                                            <div class={`w-9 h-9 rounded-full bg-gradient-to-br from-${t.from} to-${t.to} flex items-center justify-center text-xs font-semibold text-white`}>{t.initial}</div>
-                                            <div><p class="text-sm font-medium" style="color:var(--text-primary)">{t.name}</p><p class="text-xs" style="color:var(--text-muted)">{t.batch}</p></div>
+                                            <div class={`w-9 h-9 rounded-full bg-gradient-to-br from-${entry.data.avatarFrom} to-${entry.data.avatarTo} flex items-center justify-center text-xs font-semibold text-white`}>{entry.data.initial}</div>
+                                            <div><p class="text-sm font-medium" style="color:var(--text-primary)">{entry.data.name}</p><p class="text-xs" style="color:var(--text-muted)">{entry.data.batch}</p></div>
                                         </div>
                                     </div>
                                 ))}
@@ -34,7 +45,9 @@ const pages = [testimonials.id.slice(0, 3), testimonials.id.slice(3, 6)];
             </div>
             <div class="flex items-center justify-center gap-4 mt-8">
                 <button id="prevTestimonial" class="w-10 h-10 rounded-full border flex items-center justify-center" style="border-color:var(--border-main);color:var(--text-muted)"><i data-lucide="chevron-left" class="w-4 h-4"></i></button>
-                <div class="flex gap-2"><div id="dot0" class="w-2 h-2 rounded-full" style="background:var(--accent)"></div><div id="dot1" class="w-2 h-2 rounded-full" style="background:var(--text-faint)"></div></div>
+                <div id="testimonialDots" class="flex gap-2">
+                    {pages.map((_, i) => <div class="dot w-2 h-2 rounded-full" style={`background:${i === 0 ? 'var(--accent)' : 'var(--text-faint)'}`}></div>)}
+                </div>
                 <button id="nextTestimonial" class="w-10 h-10 rounded-full border flex items-center justify-center" style="border-color:var(--border-main);color:var(--text-muted)"><i data-lucide="chevron-right" class="w-4 h-4"></i></button>
             </div>
         </div>
@@ -44,15 +57,15 @@ const pages = [testimonials.id.slice(0, 3), testimonials.id.slice(3, 6)];
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         let cs = 0;
-        const ts = 2;
         const tr = document.getElementById('testimonialTrack');
-        if (!tr) return;
+        const dots = Array.from(document.querySelectorAll('#testimonialDots .dot'));
+        const ts = dots.length;
+        if (!tr || ts <= 1) return;
         function uc() {
             tr!.style.transform = `translateX(-${cs * 100}%)`;
-            for (let i = 0; i < ts; i++) {
-                const dot = document.getElementById(`dot${i}`);
-                if (dot) dot.style.background = i === cs ? 'var(--accent)' : 'var(--text-faint)';
-            }
+            dots.forEach((dot, i) => {
+                (dot as HTMLElement).style.background = i === cs ? 'var(--accent)' : 'var(--text-faint)';
+            });
         }
         document.getElementById('prevTestimonial')?.addEventListener('click', () => { cs = (cs - 1 + ts) % ts; uc(); });
         document.getElementById('nextTestimonial')?.addEventListener('click', () => { cs = (cs + 1) % ts; uc(); });

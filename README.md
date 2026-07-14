@@ -79,6 +79,27 @@ Detail tambahan tentang event (opsional)...
 Homepage otomatis menampilkan event dengan `startDate` terdekat yang belum
 lewat. Semua event (termasuk yang sudah selesai) tampil di `/events/`.
 
+## Menambah testimoni
+
+Taruh file `.md` di `src/content/testimonials/`:
+
+```md
+---
+name: "Nama"
+batch: "Retreat Batch 9"
+initial: "N"                 # huruf di avatar bulat
+avatarFrom: "green-400"      # warna gradient avatar (nama warna Tailwind)
+avatarTo: "green-600"
+date: 2026-07-03
+draft: false
+---
+
+Kutipan testimoninya di sini.
+```
+
+Carousel di homepage otomatis membagi testimoni jadi grup 3 dan menyesuaikan
+jumlah dot navigasinya.
+
 ## Menambah gift
 
 Taruh file `.md` di `src/content/gift/`, ada dua tipe:

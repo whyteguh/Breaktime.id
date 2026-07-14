@@ -57,26 +57,6 @@ export const T = {
 
 export type Lang = keyof typeof T;
 
-// Testimonials stay static (not a collection) — same bilingual copy as initialdesign.html.
-export const testimonials = {
-  id: [
-    { text: '"Saya datang nyaris tak bisa menahan diri. Saya pulang merasa bisa bernapas lagi. Bukan karena semuanya sudah beres — tapi karena diperbolehkan untuk tidak baik-baik saja."', name: 'Anindya', batch: 'Retreat Batch 6', initial: 'A', from: 'green-400', to: 'green-600' },
-    { text: '"Jalan sunyi mengubah sesuatu dalam diri saya yang tak bisa dijelaskan. Untuk pertama kali dalam bertahun-tahun, saya mendengar suara saya sendiri — bukan kebisingan ekspektasi."', name: 'Ratna', batch: 'Retreat Batch 7', initial: 'R', from: 'emerald-400', to: 'emerald-600' },
-    { text: '"Guide Path tidak mengajarkan saya menyembuhkan orang. Ia mengajarkan saya bagaimana duduk bersama seseorang dalam kegelapan tanpa berusaha mengejar mereka ke cahaya. Itu layanan sejati."', name: 'Fajar', batch: 'Lulusan Guide Path', initial: 'F', from: 'amber-400', to: 'amber-600' },
-    { text: '"Awalnya saya skeptis. Kira-kira ini acara motivasi lagi. Tapi para fasilitator menjaga ruang dengan begitu lembut — tanpa positivitas beracun, hanya kehadiran yang jujur."', name: 'Dewi', batch: 'Retreat Batch 5', initial: 'D', from: 'purple-400', to: 'purple-600' },
-    { text: '"Setelah burnout, saya bahkan tak bisa menamai apa yang saya rasakan. Sesi neurosains membantu saya memahami — otak saya tidak rusak, ia sedang melindungi saya. Itu mengubah segalanya."', name: 'Bayu', batch: 'Retreat Batch 7', initial: 'B', from: 'rose-400', to: 'rose-600' },
-    { text: '"Sebagai terapis, Guide Path menambah dimensi yang tak pernah saya pelajari di sekolah — bagaimana benar-benar beristirahat sendiri, agar bisa menawarkan istirahat kepada orang lain. Sangat merendahkan."', name: 'Maya', batch: 'Lulusan Guide Path', initial: 'M', from: 'cyan-400', to: 'cyan-600' },
-  ],
-  en: [
-    { text: '"I came in barely holding together. I left feeling like I could finally breathe again. Not because everything was fixed — but because I was allowed to not be okay."', name: 'Anindya', batch: 'Retreat Batch 6', initial: 'A', from: 'green-400', to: 'green-600' },
-    { text: "\"The silence walk changed something in me I can't explain. For the first time in years, I heard my own voice — not the noise of expectations.\"", name: 'Ratna', batch: 'Retreat Batch 7', initial: 'R', from: 'emerald-400', to: 'emerald-600' },
-    { text: "\"The Guide Path didn't teach me how to heal people. It taught me how to sit with someone in their darkness without trying to rush them into light. That's real service.\"", name: 'Fajar', batch: 'Guide Path Graduate', initial: 'F', from: 'amber-400', to: 'amber-600' },
-    { text: '"I was skeptical. Thought this would be another motivational thing. But the facilitators held the space with such gentleness — no toxic positivity, just honest presence."', name: 'Dewi', batch: 'Retreat Batch 5', initial: 'D', from: 'purple-400', to: 'purple-600' },
-    { text: '"After burnout, I couldn\'t even name what I felt. The neuroscience sessions helped me understand — my brain wasn\'t broken, it was protecting me. That changed everything."', name: 'Bayu', batch: 'Retreat Batch 7', initial: 'B', from: 'rose-400', to: 'rose-600' },
-    { text: '"As a therapist, the Guide Path added a dimension I never learned in school — how to truly rest myself, so I can offer rest to others. Profoundly humbling."', name: 'Maya', batch: 'Guide Path Graduate', initial: 'M', from: 'cyan-400', to: 'cyan-600' },
-  ],
-} as const;
-
 export const socials = [
   { label: '@breaktime.id', platform: 'instagram', href: 'https://instagram.com/breaktime.id' },
   { label: 'TikTok', platform: 'tiktok', href: 'https://tiktok.com/@breaktime.id' },

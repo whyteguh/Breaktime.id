@@ -63,4 +63,18 @@ const gift = defineCollection({
   }),
 });
 
-export const collections = { blog, products, events, gift };
+const testimonials = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/testimonials' }),
+  schema: z.object({
+    name: z.string(),
+    batch: z.string(),
+    initial: z.string(),
+    // Tailwind gradient stops, e.g. "green-400" / "green-600".
+    avatarFrom: z.string(),
+    avatarTo: z.string(),
+    date: z.coerce.date(),
+    draft: z.boolean().default(false),
+  }),
+});
+
+export const collections = { blog, products, events, gift, testimonials };
