@@ -4,6 +4,8 @@ description: "Kelelahanmu bukan bug — ia adalah bisikan tubuh tentang apa yang
 category: "Psikologi"
 image: "https://picsum.photos/seed/burnout-rest-forest/600/400.jpg"
 date: 2024-12-05
+author: 
+draft: true
 ---
 
 Kita sering memperlakukan burnout seperti kegagalan pribadi — tanda bahwa kita kurang disiplin, kurang kuat, atau kurang bersyukur. Tapi burnout bukan kegagalan karakter. Ia adalah respons yang masuk akal dari tubuh dan pikiran yang terlalu lama diminta berlari tanpa jeda.

@@ -4,6 +4,8 @@ description: "Apa yang terjadi di otakmu saat kamu benar-benar istirahat? Bukan 
 category: "Neurosains"
 image: "https://picsum.photos/seed/neuroscience-brain-green/600/400.jpg"
 date: 2024-10-02
+author: 
+draft: true
 ---
 
 Saat kamu berhenti mengejar sesuatu — tidak scrolling, tidak menyelesaikan tugas, hanya diam — otakmu tidak ikut mati. Sebaliknya, jaringan yang disebut *default mode network* menyala, menghubungkan ingatan, emosi, dan makna dengan cara yang tidak bisa dilakukan saat kamu sibuk fokus pada satu tugas.

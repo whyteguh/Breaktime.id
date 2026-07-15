@@ -4,6 +4,8 @@ description: "Jauh sebelum neurosains memetakan jaringan mode bawaan, filsuf kun
 category: "Kebijaksanaan Kuno"
 image: "https://picsum.photos/seed/ancient-wisdom-nature/600/400.jpg"
 date: 2024-11-08
+author: 
+draft: true
 ---
 
 Marcus Aurelius menulis catatan hariannya bukan untuk dipublikasikan, tapi untuk berhenti sejenak dan bicara jujur pada dirinya sendiri di tengah kekaisaran yang menuntutnya terus bergerak. Ribuan tahun sebelum istilah "burnout" diciptakan, kaum Stoa sudah memahami sesuatu yang kita lupakan: jeda yang disengaja bukan pelarian dari tanggung jawab, melainkan syarat untuk menjalankannya dengan baik.

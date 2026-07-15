@@ -2,7 +2,7 @@
 title: "Breaktime Workshop & Retreat"
 tagline: "A Journey on Finding Magic"
 badge: "Batch 8"
-image: "https://picsum.photos/seed/spiritual-camp-forest/800/700.jpg"
+image: "https://picsum.photos/id/10/800/700"
 dateLabel: "2–3 Mei 2026"
 startDate: 2026-05-02
 venue: "Hadwiwijaya Spiritual Camp, Malang"
