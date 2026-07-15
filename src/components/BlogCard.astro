@@ -6,12 +6,12 @@ interface Props {
   post: CollectionEntry<'blog'>;
 }
 const { post } = Astro.props;
-const { title, description, category, image, date } = post.data;
+const { title, description, category, image, date, author } = post.data;
 ---
 <a href={`/blog/${post.id}/`} class="blog-card group rounded-2xl overflow-hidden border th-card block" style="background:var(--bg-card);border-color:var(--border-main)">
     <div class="overflow-hidden h-48"><img src={image} alt="" class="blog-img w-full h-full object-cover transition-transform duration-700"></div>
     <div class="p-5">
-        <div class="flex items-center gap-3 mb-3"><span class="px-2.5 py-1 rounded-full text-xs font-medium" style="background:var(--accent-soft);color:var(--accent-text)">{category}</span><span class="text-xs" style="color:var(--text-muted)">{fmtMonth(date)}</span></div>
+        <div class="flex items-center gap-3 mb-3 flex-wrap"><span class="px-2.5 py-1 rounded-full text-xs font-medium" style="background:var(--accent-soft);color:var(--accent-text)">{category}</span><span class="text-xs" style="color:var(--text-muted)">{fmtMonth(date)}</span>{author && <span class="text-xs" style="color:var(--text-muted)">· {author}</span>}</div>
         <h3 class="font-serif text-lg font-semibold mb-2" style="color:var(--text-primary)">{title}</h3>
         <p class="text-sm leading-relaxed line-clamp-3" style="color:var(--text-muted)">{description}</p>
     </div>

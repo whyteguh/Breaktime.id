@@ -5,7 +5,7 @@ badge: "Batch 10"
 image: "https://picsum.photos/id/10/800/700"
 dateLabel: "TBA"
 startDate: 2026-12-31
-venue: "Hadwiwijaya Spiritual Camp, Malang"
+venue: "Hadiwijaya Spiritual Camp, Malang"
 duration: "2 Hari, 1 Malam"
 ctaLabel: "Pesan Tempatmu"
 ctaHref: "https://wa.me/6282338036703"
