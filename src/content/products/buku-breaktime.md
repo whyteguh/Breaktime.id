@@ -1,18 +1,20 @@
 ---
-title: "Buku Breaktime"
-tagline: "Pendamping perjalanan pribadimu"
-description: "Sebuah buku yang menemanimu memahami dan menjalani framework breaktime — kapan saja, di mana saja. Bukan buku yang harus dituntas, melainkan buku yang menunggumu di saat kamu siap."
+title: "Breaktime (Buku)"
+tagline: "Catatan pengingat untuk dibaca di saat jeda"
+description: "Sebuah buku yang menemanimu mengingat kembali nilai nilai kehidupan, dengan bahasa yang ringan dan santai seperti teman perjalanan."
 icon: "book-open-text"
 features:
-  - { icon: "layers", text: "Framework breaktime yang utuh & terstruktur" }
-  - { icon: "pen-line", text: "Praktik refleksi & jurnal terintegrasi" }
-  - { icon: "sparkles", text: "Neurosains, psikologi, filsafat & kebijaksanaan kuno" }
-  - { icon: "clock", text: "Dikerjakan kapan saja, di mana saja" }
+  - { icon: "layers", text: "Kumpulan esai & catatan personal" }
+  - { icon: "pen-line", text: "Refleksi jujur dari pengalaman nyata" }
+  - { icon: "sparkles", text: "Ditulis langsung oleh Arisdiansah, founder breaktime" }
+  - { icon: "clock", text: "Dibaca santai, kapan saja kamu butuh jeda" }
 ctaLabel: "Pelajari Buku Ini"
 ctaHref: "https://wa.me/6282338036703"
 order: 3
 ---
 
-Ditulis untuk dibaca perlahan — satu bab, satu jeda. Buku ini menenun psikologi, neurosains, filsafat, dan kebijaksanaan kuno menjadi bahasa yang mudah dipeluk, lengkap dengan ruang jurnal di setiap babnya.
+Bukan buku framework dengan bab-bab terstruktur. Buku ini adalah kumpulan esai, catatan, dan pengalaman pribadi dari Arisdiansah, founder breaktime — ditulis dengan cara yang sama seperti ia bercerita di tulisan-tulisan blog: jujur, personal, kadang menyentuh, kadang menampar pelan.
+
+Cocok dibaca satu-dua halaman setiap kali kamu butuh jeda, tanpa harus mengikuti urutan bab tertentu.
 
 Tersedia dalam format cetak dan digital.
