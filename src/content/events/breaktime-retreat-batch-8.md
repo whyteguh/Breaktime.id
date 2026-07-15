@@ -8,7 +8,7 @@ startDate: 2026-05-02
 venue: "Hadwiwijaya Spiritual Camp, Malang"
 duration: "2 Hari, 1 Malam"
 ctaLabel: "Pesan Tempatmu"
-ctaHref: "https://wa.me/"
+ctaHref: "https://wa.me/6282338036703"
 ---
 
 Batch 8 dibuka untuk 20 peserta. Kamu akan dipandu melalui meditasi terpandu, breathwork, sesi berbagi dalam lingkaran kecil, jalan sunyi, dan waktu jurnal — semua dikelilingi alam Malang yang tenang.

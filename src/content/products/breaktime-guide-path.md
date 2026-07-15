@@ -9,7 +9,7 @@ features:
   - { icon: "handshake", text: "Keterampilan fasilitasi & space-holding" }
   - { icon: "badge-check", text: "Sertifikasi Breaktime Guide Practitioner" }
 ctaLabel: "Daftar Guide Path"
-ctaHref: "https://wa.me/"
+ctaHref: "https://wa.me/6282338036703"
 order: 2
 ---
 

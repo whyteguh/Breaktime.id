@@ -9,7 +9,7 @@ features:
   - { icon: "sparkles", text: "Neurosains, psikologi, filsafat & kebijaksanaan kuno" }
   - { icon: "clock", text: "Dikerjakan kapan saja, di mana saja" }
 ctaLabel: "Pelajari Buku Ini"
-ctaHref: "https://wa.me/"
+ctaHref: "https://wa.me/6282338036703"
 order: 3
 ---
 
